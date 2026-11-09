@@ -1,0 +1,63 @@
+.authModal{
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: white;
+    color:var(--dark-green);
+    gap:2rem;
+    border:none;
+}
+
+.authModal > a{
+    width:100%;padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;   
+}
+
+.logIn{
+    background-color: var(--dark-green) ;
+    color: white;
+}
+
+.signUp{
+    color:var(--dark-green);
+    border: 1px solid var(--dark-green) !important;
+}
+
+.authModal p:first-of-type{
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--sea-blue);
+}
+
+.authModal p:last-of-type{
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color: var(--dark-green);
+    cursor: pointer;
+}
+
+
+@media (max-width: 1200px) {
+    .authModal{
+        width:60%;
+    }
+}
+
+
+@media (max-width: 780px){
+    .authModal{
+        width:90%;
+    }
+}

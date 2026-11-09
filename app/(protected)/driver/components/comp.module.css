@@ -1,0 +1,205 @@
+
+.spotDiv {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap:2rem;
+}
+
+
+.spot {
+    width: 100%;
+    background-color: var(--bg-green);
+    border: 1px solid var(--green-transparent);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.spot:hover {
+    border-color: var(--soft-green);
+    transform: translateY(-2px);
+}
+
+.spot > div {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.25rem;
+}
+
+.photoContainer {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.spot img {
+    display: block;
+    width: 170px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    background-color: var(--green-transparent);
+}
+
+.toggleFavorite {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: white;
+    width: 36px;
+    height: 36px;
+    background-color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.spotInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.spotInfo h4 {
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
+}
+
+.spotInfo h5 {
+    overflow-wrap: anywhere;
+    font-weight: 400;
+}
+
+.spotInfo span {
+    color: var(--soft-green);
+    font-weight: 800;
+}
+
+.amenitiesDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.amenitiesDiv > div {
+    background-color: var(--dark-green);
+    padding: 0.45rem 0.8rem;
+    border-radius: 20px;
+}
+
+.amenitiesDiv > div > p {
+    color: white;
+    font-size: 0.85rem;
+}
+
+.spot > h5 {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    padding-top: 0.25rem;
+}
+
+.spot > h5 > span {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+@media (max-width: 1500px){
+    .spotsLists {
+        padding: 1.5rem;
+    }
+
+    .spot {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .spot img {
+        width: 140px;
+        height: 135px;
+    }
+
+    .spot > div {
+        gap: 1rem;
+    }
+
+}
+
+@media (max-width: 768px){
+     .spotsLists {
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .spotDiv {
+        gap: 1rem;
+    }
+
+    .spot {
+        gap: 0.75rem;
+        padding: 0.85rem;
+        border-radius: 16px;
+    }
+
+    .spot > div {
+        gap: 0.85rem;
+    }
+
+    .spot img {
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+    }
+
+    .spotInfo {
+        gap: 0.6rem;
+    }
+
+    .spotInfo h4 {
+        font-size: 1rem;
+    }
+
+    .spotInfo h5 {
+        font-size: 0.85rem;
+    }
+
+    .amenitiesDiv {
+        gap: 0.4rem;
+    }
+
+    .amenitiesDiv > div {
+        padding: 0.35rem 0.6rem;
+    }
+
+    .amenitiesDiv > div > p {
+        font-size: 0.75rem;
+    }
+
+    .spot > h5 > span {
+        font-size: 1.05rem;
+    }
+
+    .spot > h5 {
+        font-size: 0.8rem;
+    }
+}
+
+

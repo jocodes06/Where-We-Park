@@ -1,0 +1,73 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "tailwindcss";
+
+
+body {
+  margin: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: var(--font-bricolage);
+}
+
+:root {
+  --dark-green: #14261D;
+  --light-green: #1E5B43;
+  --bg-green: #1a3024;
+  --soft-green: #5dae8d;
+  --sunny-yellow: #F5B739;
+  --dark-yellow: #9b7427b5;
+  --soft-mint: #F2F6F3;
+  --sea-blue: #CFE8EC;
+  --soft-blue: #cfe8ec4c;
+  --gray-green: #949594;
+  --green-transparent: #94959436;
+  --green-transparent2: #1a302452;;
+}
+
+h1{
+  margin: 0;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+p {
+  color: var(--gray-green);
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 3rem;
+  width: 50%;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button{
+  box-sizing: border-box;
+}
+
+#error{
+  color:red;
+  font-weight: 700;
+}

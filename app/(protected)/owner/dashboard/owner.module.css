@@ -1,0 +1,588 @@
+.ownerMain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--dark-green);
+    color: white;
+    flex-direction: column;
+}
+
+
+/* OVERVIEW */
+
+
+.subpage{
+    width:100%;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.subpageHeader{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subpageHeader > div{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.subpageHeader button , 
+.subpageHeader a  {
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: var(--sunny-yellow);
+    color: var(--dark-green);
+    border:none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.statsDashboard{
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 2rem 0rem;
+}
+
+.statsDashboard > div{
+    background-color: var(--green-transparent);
+    border: 1px solid var(--green-transparent);
+    padding: 2rem;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width:20%;
+    gap:1rem;
+}
+
+.statsDashboard > div > span{
+    color:var(--soft-green);
+    font-weight: 600;
+}
+
+.dashboard{
+    width:100%;
+    display: flex;
+    gap:1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:2rem;
+    flex-direction: row;
+}
+
+
+/* listings */
+
+.filtersDashboard{
+    width:100%;
+    padding: 1rem 0rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap:2rem;
+} 
+
+.filtersDashboard > button{
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;  
+    background-color: transparent;
+    color:white;
+    border: 1px solid var(--green-transparent);
+}
+
+.filtersDashboard > button:hover{
+    border: transparent;
+    background-color: var(--soft-green);
+    color:var(--dark-green)
+}
+
+
+.listedSpots {
+    background-color: var(--green-transparent);
+    border: 1px solid var(--green-transparent);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 500px;
+}
+
+.addSpotDiv{
+    border-style: dashed;
+    border-width: 2px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px;
+    border-color: var(--green-transparent);
+    width:30%;
+    gap:1rem;
+    height: 500px;
+}
+
+.addSpotDiv > h5:first-of-type {
+  width: 50px;
+  height: 50px;
+  color:var(--dark-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 50%;
+  background-color: var(--sunny-yellow);
+}
+
+.addSpotDiv > h5:last-of-type{
+    color:var(--gray-green);
+    font-weight: 700;
+}
+
+.cardImage {
+  position: relative;
+  width:100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activeStatus {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--dark-green);
+  color:var(--soft-green);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.cardText{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    min-height: 0;
+}
+
+.cardText h5{
+    font-weight: 600;
+}
+
+.cardPrice{
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardButtons {
+    margin-top: auto;
+}
+
+.cardInfo, .cardButtons{
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardButtons > button{
+    padding: 1rem;
+    width:100%;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;  
+    background-color: var(--soft-green);
+    color:var(--dark-green)
+}
+
+.cardButtons > .editButton, .bookingDivRight .acceptButton{
+    border:none;
+    color:var(--dark-green);
+    background-color: var(--soft-green);
+}
+
+/* bookings */
+.bookingsDashboard , .reviewsDashboard{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height:fit-content;
+}
+.reviewsDashboard{
+    padding: 2rem 0rem;
+}
+
+.bookingDiv {
+    width: 100%;
+    background-color: var(--green-transparent);
+    border-radius: 20px;
+    border: 1px solid var(--green-transparent);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bookingDiv h3 , .reviewDiv h3 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--soft-blue);
+    border-radius: 50%;
+}
+
+.bookingDiv h5 {
+    font-weight: 600;
+}
+
+.bookingDivRight,
+.bookingDivLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bookingDivLeft {
+    gap: 1rem;
+}
+
+.bookingDivRight {
+    justify-content: flex-end;
+    gap: 5rem;
+}
+
+.bookingDiv > div > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bookingDivRight > div {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bookingDivRight > div > div {
+    text-align: right;
+}
+
+.pending,
+.confirmed,
+.completed {
+    border-radius: 20px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+}
+
+.pending {
+    background-color: var(--dark-yellow);
+    color: var(--sunny-yellow);
+}
+
+.confirmed {
+    background-color: var(--green-transparent);
+    color: var(--soft-green);
+}
+
+.completed {
+    background-color: var(--green-transparent);
+    color: var(--soft-blue);
+}
+
+.bookingDivRight > div > button {
+    padding: 1rem;
+    width: 45%;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: 2px solid var(--green-transparent);
+}
+
+.buttonsDiv > .cancel{
+    width:100%;
+    background-color: var(--dark-green);
+    color:white;
+}
+
+/* earnings */
+
+
+.subpage .paymentSettingsButton{
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: transparent;
+    color: white;
+    border:2px solid var(--green-transparent);
+    cursor: pointer;
+    font-weight: 500;
+}
+.subpage{
+        min-height: 100dvh;
+}
+
+/* reviews */
+
+.allReviews{
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--green-transparent);
+    border: 1px solid var(--green-transparent);
+    padding: 2rem;
+    border-radius: 20px;
+    gap:1rem;
+}
+
+.allReviews > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    gap:1rem;
+}
+
+
+.allReviews > div:first-of-type{
+    border-right: 1px solid var(--green-transparent);
+    width:10%;
+}
+
+
+.allReviews h2 {
+    text-align: center;
+}
+
+.reviewBreakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+}
+
+.reviewRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.reviewRow > span:first-child {
+    width: 45px;
+    flex-shrink: 0;
+}
+
+.reviewRow > span:last-child {
+    width: 25px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.progressBar {
+    flex: 1;
+    min-width: 0;
+    height: 8px;
+    background: var(--green-transparent);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--sunny-yellow);
+    border-radius: 999px;
+}
+
+.reviews{
+    display: flex;
+    align-items: center;
+    width:100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reviewDiv{
+    display: flex;
+    width:100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: var(--green-transparent);
+    border: 1px solid var(--green-transparent);
+    padding: 2rem;
+    border-radius: 20px;
+    gap:1rem;
+}
+
+.reviewDiv > div{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.reviewLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:1rem
+}
+
+
+.reviewDiv button{
+    padding: 1rem 0.5rem;
+    width:20%;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;  
+    background-color: transparent;
+    color:white;
+    border: 2px solid var(--green-transparent);
+}
+
+
+
+
+@media (max-width: 1500px){
+    .listingDivs > div{
+        height:500px;
+        width:40%;
+    }
+    .dashboard{
+        width:100%;
+    }
+    .statsDashboard{
+        flex-wrap: wrap;
+        gap:1rem;
+    }
+    .statsDashboard > div{
+        width:100%;
+    }
+    .allReviews > div{
+        width:80%;
+    }
+    .allReviews > div:first-of-type{
+        width:20%;
+    }
+
+}
+
+@media (max-width: 780px){
+    .addSpotDiv{
+        width:100%;
+    }
+    .statsDashboard{
+        flex-direction: row;
+        gap:1rem;
+        flex-wrap: wrap;
+    }
+    .statsDashboard > div{
+        width:45%;
+    }
+    .dashboard{
+        gap:2rem;
+    }
+    .listedSpots{
+        width:100%;
+    }
+    .ownerMain header div {
+        width:50%;
+    }
+    .bookingDiv {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .bookingDivRight,
+    .bookingDivLeft {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bookingDiv > .bookingDivLeft > div,
+    .bookingDiv > .bookingDivRight > div {
+        align-items: flex-start;
+    }
+
+    .bookingDiv > div > div {
+        flex-direction: column;
+    }
+
+    .bookingDivRight > div > div {
+        text-align: left;
+    }
+
+    .bookingDiv > .bookingDivRight {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .bookingDiv > .bookingDivRight > .buttonsDiv {
+        flex-direction: row;
+    }
+
+    .bookingDiv > .bookingDivRight > div > button {
+        width: 100%;
+    }
+    .allReviews > div{
+        width:70%;
+    }
+    .allReviews > div:first-of-type{
+        width:30%;
+    }
+
+
+}
+
+

@@ -1,0 +1,108 @@
+.header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    background-color: var(--bg-green);
+    border-bottom: 1px solid var(--green-transparent);
+}
+
+.userInfo{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userInfo > div {
+    width: 60%;
+    background-color: var(--green-transparent);
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.userInfo > div > button{
+    border-radius: 20px;
+    width:50%;
+    border:none;
+    padding: 0.5rem;
+    background-color: transparent;
+    color: var(--gray-green);
+}
+
+.userLetter{
+    width:50px;
+    height:50px;
+    background-color: var(--sunny-yellow);
+    color:var(--dark-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.userInfo > div > .roleActive{
+    background-color: var(--dark-green);
+    color:white;
+    font-weight: 700;
+}
+
+.logOutButton{
+    cursor: pointer;
+}
+
+
+.navigation{
+    padding: 0rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:3rem;
+    flex-direction: row;
+    width: 100%;
+    background-color: var(--bg-green);
+    border-bottom: 1px solid var(--green-transparent);
+    
+}
+
+.navigation h5{
+    color:var(--gray-green);
+    margin:0;
+    cursor: pointer;
+}
+
+.navigation a {
+    color:var(--gray-green);
+}
+
+.navigation .activeLink{
+    color:white;
+    border-bottom: 2px solid var(--sunny-yellow);
+    padding: 1rem;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .header {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .userInfo{
+        width:50%;
+    }
+    .userInfo > div{
+        width:50%;
+    }
+
+}
+

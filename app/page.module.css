@@ -1,0 +1,603 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--dark-green);
+    color: var(--soft-mint);
+}
+
+.home header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+}
+
+.homeHero,
+.homeFeatures,
+.homeStartTrip,
+.homeTrip,
+.homeFooter {
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.home>header>div {
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home>header>div>p {
+    cursor: pointer;
+}
+
+.home>header>div>p:hover {
+    color: white;
+}
+
+.home>header>div>a,
+.heroButtons button,
+.heroButtons a {
+    padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+}
+
+.logInButton,
+.signUpButton {
+    font-size: 1rem;
+    transition: all 0.3s ease-in;
+}
+
+.logInButton:hover {
+    color: var(--soft-green);
+}
+
+.signUpButton:hover {
+    color: var(--soft-green);
+    background-color: white;
+}
+
+.logInButton {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.signUpButton {
+    color: var(--dark-green);
+    background-color: var(--soft-green);
+    border: none;
+}
+
+.homeHero {
+    min-height: 90vh;
+    padding: 4rem 0rem;
+}
+
+.homeHero>h1 {
+    font-size: 5rem;
+    width: 60%;
+    text-align: center;
+}
+
+.heroButtons {
+    margin: 2rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.pageblur {
+  filter: blur(8px);
+}
+
+
+.parkingSearch>input {
+    width: 80%;
+    margin-right: 1rem;
+    height: 50px;
+    border: none;
+    color:var(--dark-green);
+}
+
+.parkingSearch>input:focus {
+    outline: none;
+    border: none;
+}
+
+.featureButtons {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.featureButtons>button {
+    color: white;
+    background-color: var(--green-transparent);
+}
+
+.parkingSearch {
+    width: 100%;
+    display: flex;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.parkingSearch i {
+    margin-right: 1rem;
+    color: var(--dark-green)
+}
+
+.createTripButton {
+    color: var(--dark-green);
+    background-color: var(--sunny-yellow);
+    border: none;
+}
+
+.joinWithLinkButton,
+.createTripButton {
+    font-size: 1.2rem;
+}
+
+.joinWithLinkButton {
+    border: 2px solid var(--gray-green);
+    background-color: transparent;
+    color: white;
+}
+
+.joinWithLinkButton:hover {
+    border-color: var(--soft-green);
+}
+
+.homeHero>span {
+    color: var(--gray-green);
+}
+
+/* features */
+
+.homeFeatures {
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--bg-green);
+}
+
+.featureDivs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.featureDivs>div {
+    width: 30%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding: 2rem 0rem;
+    gap: 1rem;
+    border-top: 1px solid var(--green-transparent);
+}
+
+.featureDivs>div>span {
+    font-size: 2rem;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.featureDivs>div:nth-child(odd)>span {
+    background-color: var(--sunny-yellow)
+}
+
+.featureDivs>div:nth-child(even)>span {
+    background-color: var(--soft-mint);
+}
+
+
+
+/* start trip section */
+
+.homeStartTrip {
+    background-color: var(--dark-green);
+    align-items: flex-start;
+}
+
+.homeStartTrip>section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homeStartTrip>section>div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25%;
+}
+
+.homeStartTrip>section>div>span {
+    font-size: 1.5rem;
+    color: var(--dark-green);
+    background-color: var(--sunny-yellow);
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    font-weight: 700;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Trip Colaboration Section */
+
+.homeTrip {
+    background-color: var(--bg-green);
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.tripCards {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.card {
+    width: 45%;
+    height: 550px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: var(--dark-green);
+    border: 1px solid var(--green-transparent);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.card>div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--green-transparent);
+}
+
+.card>div:last-child {
+    border-bottom: none;
+    margin-bottom: 0rem;
+}
+
+.card>div .initial {
+    font-size: 1rem;
+    color: var(--dark-green);
+    background-color: var(--sunny-yellow);
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    font-weight: 700;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.card>div .name {
+    font-weight: 800;
+}
+
+.home .owner,
+.home .editor,
+.home .viewer {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.home .owner {
+    background-color: var(--sunny-yellow);
+    color: var(--dark-green);
+}
+
+.home .editor {
+    background-color: var(--sea-blue);
+    color: var(--dark-green);
+}
+
+.home .viewer {
+    background-color: var(--soft-green);
+    color: white;
+}
+
+.homeFooter {
+    gap: 4rem;
+}
+
+.homeFooter>div {
+    width: 100%;
+    background-color: var(--soft-green);
+    color: var(--dark-green);
+    display: flex;
+    flex-direction: row;
+    padding: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.homeFooter>div>div {
+    gap:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.homeFooter>div>div>.signUp {
+    font-size: 1rem;
+    padding: 1.5rem 2rem;
+    border: transparent;
+    font-weight: 700;
+    border-radius: 2rem;
+    color: var(--dark-green);
+    background-color: var(--sunny-yellow);
+    cursor: pointer;
+    transition: 0.3s all ease-in;
+}
+
+.homeFooter>div>div>.signUp:hover {
+    background-color: var(--dark-green);
+    color: var(--sunny-yellow);
+
+}
+
+.homeFooter>div>div>.logIn {
+    font-size: 1rem;
+    padding: 1.5rem 2rem;
+    border: transparent;
+    font-weight: 700;
+    border-radius: 2rem;
+    color: var(--dark-green);
+    background-color: transparent;
+    border: 2px solid var(--dark-green);
+    cursor: pointer;
+}
+
+.homeFooter>div>div>.logIn:hover {
+    color: var(--soft-green);
+    background-color: var(--dark-green);
+
+}
+
+
+.homeFooter footer {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.homeFooter footer>div {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+}
+
+
+/* Tablet-view */
+
+@media (max-width: 1200px) {
+
+    .home>header>div {
+        width: 25%;
+    }
+
+
+    .homeHero>h1 {
+        font-size: 4rem;
+        width: 80%;
+    }
+
+    .homeHero .heroButtons{
+        width:80%;
+    }
+
+    .heroButtons {
+        width: 40%;
+    }
+
+
+
+    .featureDivs>div {
+        width: 45%;
+    }
+
+    .homeStartTrip>section>div {
+        width: 30%;
+    }
+
+    .card {
+        width: 49%;
+        height: 520px;
+    }
+
+    .card>div {
+        gap: 1rem;
+    }
+
+    .card>div .initial {
+        font-size: 0.8rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .card>div>h5 {
+        font-size: 0.8rem;
+    }
+
+    .homeFooter>div {
+        padding: 3rem;
+    }
+    .homeFooter>div>div {
+        gap:1rem;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 780px) {
+
+    .home>header {
+        padding: 1rem;
+    }
+
+    .home h2 {
+        width: 100%;
+    }
+
+    .home>header>div {
+        gap: 0.5rem;
+    }
+    .home > header  p{
+        text-align: center;
+    }
+
+    .home>header>div>a {
+
+        padding: 0.5rem;
+    }
+
+    .logInButton,
+    .signUpButton {
+        font-size: 0.85rem;
+    }
+
+    .homeHero {
+        min-height: 40vh;
+    }
+
+    .homeHero>h1 {
+        font-size: 2.4rem;
+    }
+
+    .homeHero > p{
+        text-align: center;
+        width:60%;
+    }
+
+    .heroButtons {
+        gap: 2rem;
+        width: 80%;
+    }
+
+    .homeStartTrip>section {
+        align-items: flex-start;
+    }
+
+    .heroButtons>button {
+        padding: 1rem 4rem;
+    }
+
+    .joinWithLinkButton,
+    .createTripButton {
+        font-size: 1rem;
+    }
+
+    .featureDivs>div {
+        padding: 1.25rem 0;
+    }
+
+    .featureDivs>div>h3 {
+        font-size: 1.25rem;
+    }
+
+    .featuresIcon {
+        padding: 0.75rem;
+    }
+
+    .homeStartTrip>section {
+        gap: 2rem;
+    }
+
+    .homeStartTrip>section>div>span {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .tripCards {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .card {
+        width: 100%;
+        min-height: 550px;
+    }
+
+    .card>div .initial {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.75rem;
+    }
+
+    .card>div>h5 {
+        font-size: 1rem;
+    }
+
+    .homeFooter>div>div {
+        flex-direction: column;
+        gap: 1rem;
+     
+    }
+
+    .homeFooter>div>div>.signUp,
+    .homeFooter>div>div>.logIn {
+        width: 100%;
+        padding: 1rem;
+    }
+
+}

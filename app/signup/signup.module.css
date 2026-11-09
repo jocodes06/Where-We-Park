@@ -1,0 +1,316 @@
+.signUpPage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--dark-green);
+    color: var(--soft-mint);
+    min-height: 100vh;
+
+}
+
+.signUpPage > header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height:100px;
+    box-sizing: border-box;
+
+}
+
+.signUpPage > header > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    gap:1rem;
+
+}
+
+.signUpPage header div a{
+    font-weight: 700;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.signUpPage header div a:hover{
+    background-color: var(--green-transparent);
+}
+
+.signUpHero{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem;
+    flex-direction: row;
+
+}
+
+.signUpHero > div{
+    display: flex;
+    width:45%;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.signUpHero > div > form{
+    display: flex;
+    width:90%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap:1rem;
+}
+
+.signUpHero > div > form > input, .signUpHero > div > form > .SignUpNames > div > input ,
+.signUpHero > div > form > .passwordDivs {
+    width:100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--green-transparent);
+    background-color:var(--green-transparent) ;
+    font-size: 1rem;
+    font-weight: 500;
+    color:white;
+}
+
+.signUpHero > div > form > .passwordDivs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signUpHero > div > form > .passwordDivs input{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}
+
+.signUpHero > div > form > .passwordDivs i {
+    cursor: pointer;
+    color:var(--gray-green);
+}
+
+
+
+.signUpHero input::placeholder{
+    color:var(--gray-green);
+}
+
+.signUpHero > div > form > .SignUpNames{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signUpHero > div > form > .SignUpNames > div{
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
+.SignUpCheckbox{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    gap:1rem;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.SignUpCheckbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+
+    background: #94959436;
+    border: 1px solid #94959436;
+    border-radius: 5px;
+
+    cursor: pointer;
+    position: relative;
+    margin: 2px 0 0;
+}
+
+.SignUpCheckbox input[type="checkbox"]:checked {
+    background: #94959436;
+    border-color: #94959436;
+}
+
+.SignUpCheckbox input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+
+    width: 5px;
+    height: 10px;
+
+    left: 6px;
+    top: 3px;
+
+    border: solid #5dae8d;
+    border-width: 0 2px 2px 0;
+
+    transform: rotate(45deg);
+}
+
+.signUpPage button{
+    width:100%;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;   
+    border:none;
+    cursor: pointer;
+}
+
+.createAccountButton{
+    margin-top: 1rem;
+    background-color: var(--sunny-yellow); 
+    color:var(--dark-green)
+}
+
+.continueWith{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    padding: 1rem 0rem;
+}
+
+.continueWith > hr{
+    border: 1px solid var(--green-transparent);
+    width:30%;
+}
+
+.continueWithButtons{
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    gap:1rem;
+}
+
+.continueWithButtons > button{
+    color:white;
+    background-color: transparent;
+    border:2px solid var(--green-transparent);
+}
+
+.continueWithButtons > button:hover{
+    border:2px solid var(--soft-green);
+}
+
+.haveAnAccount{
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    gap:1rem
+}
+
+.signUpPage form  span, .signUpPage form a{
+    text-decoration: underline;
+    color:var(--soft-green);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ChooseRole{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--green-transparent);
+    padding:0.5rem;
+    gap:1rem;
+    border-radius: 20px;
+}
+
+.ChooseRole > button{
+    background-color: transparent;
+    color:white;
+    border-radius: 20px;
+}
+
+.ChooseRole > button:hover{
+    background-color: var(--dark-green);
+}
+
+.ChooseRole > .roleActive{
+    color: var(--dark-green);
+    background-color:white;
+}
+
+.ChooseRole > .roleActive:hover{
+    color: var(--dark-green);
+    background-color:white;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .signUpHero{
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        gap:5rem;
+        flex-direction: column;
+    }
+    .signUpHero > div{
+        width:100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .signUpHero > div > form{
+        width:100%;
+    }
+}
+
+
+@media (max-width: 780px) {
+    .signUpHero{
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        gap:5rem;
+        flex-direction: column;
+    }
+    .signUpHero > div{
+        width:100%;
+    }
+    .signUpHero > div > form{
+        width:100%;
+    }
+    .signUpHero > div > form > h2,
+    .signUpHero > div > form > p:first-of-type{
+        width: 100%;
+        text-align: center;
+    }
+    .signUpPage > header > div{
+        gap:1rem;
+
+    }
+    .signUpPage > header > div p, .signUpPage > header > div p{
+        text-align: center;
+    }
+
+}
