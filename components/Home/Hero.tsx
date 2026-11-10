@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "../../app/page.module.css";
+import styles from "./home.module.css";
 import { isModalOpen } from "../Contexts/ModalContext";
 
 export default function Hero() {
@@ -20,8 +20,7 @@ export default function Hero() {
             type="text"
             name=""
             id=""
-            placeholder=" 
-Cheap covered parking near the stadium tomorrow"
+            placeholder="Cheap covered parking near the stadium tomorrow"
           />
           <button
             className={styles.createTripButton}
@@ -32,8 +31,8 @@ Cheap covered parking near the stadium tomorrow"
           </button>
         </div>
         <div className={styles.featureButtons}>
-          <button>Covered</button>
-          <button>Under 5 € / hour</button>
+          <button type="button">Covered</button>
+          <button type="button">Under 5 € / hour</button>
         </div>
       </div>
     </section>

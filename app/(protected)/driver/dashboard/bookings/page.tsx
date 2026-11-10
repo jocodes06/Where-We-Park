@@ -38,6 +38,7 @@ export default function MyBookings() {
                   </button>
                 </div>
               </article>
+
             ),
         )}
         {!bookingRequests.some(

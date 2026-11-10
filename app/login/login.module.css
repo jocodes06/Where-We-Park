@@ -145,7 +145,7 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .logInHero{
         flex-direction: column;
         justify-content: space-between;
@@ -167,26 +167,80 @@
 
 }
 
+@media (min-width: 481px) and (max-width: 768px) {
 
-@media (max-width: 780px) {
-    .logInHero{
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        gap:5rem;
+    .logInHero {
         flex-direction: column-reverse;
+        justify-content: center;
+        height: auto;
+        gap: 3rem;
+        padding: 2rem;
     }
-    .logInHero > div{
-        width:100%;
+
+    .logInHero > div {
+        width: 100%;
     }
-    .logInHero > div > form{
-        width:100%;
+
+    .logInHero > div > form {
+        width: 100%;
+        padding: 2rem;
     }
-    .logInHero > div > form > h2,
-    .logInHero > div > form > p:first-of-type{
+
+    .logInHero > div > form > h2 {
+        font-size: 2rem;
         width: 100%;
         text-align: center;
     }
-    
 
+    .logInHero > div > form > p:first-of-type {
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logInPage > header h1{
+        font-size: 1rem;
+    }
+    .logInPage > header > div{
+        font-size: 0.5rem;
+        text-align: center;
+        gap:0;
+    }
+    .logInPage a{
+        margin:0
+    }
+    .logInPage > header > div > p{
+        font-size: 0.5rem;
+    }
+
+    .logInHero {
+        flex-direction: column-reverse;
+        justify-content: center;
+        height: auto;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .logInHero > div {
+        width: 100%;
+    }
+
+    .logInHero > div > form {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .logInHero > div > form > h2 {
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .logInHero > div > form > p:first-of-type {
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
 }

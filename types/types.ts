@@ -81,6 +81,14 @@ export type FavoriteSpot = {
 };
 
 
+ export type FeaturesType = {
+  icon: string,
+  title: string,
+  text: string,
+}[]
+
+
+
 
 
 export type parkingSpotForm = {

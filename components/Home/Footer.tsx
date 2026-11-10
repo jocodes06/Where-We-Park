@@ -1,4 +1,5 @@
-import styles from '../../app/page.module.css'
+import styles from  "./home.module.css"
+import Link from 'next/link'
 
 export default function Footer(){
 
@@ -8,8 +9,8 @@ export default function Footer(){
         <div>
           <h2>Ready to park smarter?</h2>
           <div>
-            <button className={styles.signUp}>Sign up for free</button>
-            <button className={styles.logIn}>Log In</button>
+            <Link href="/signup" className={styles.signUp}>Sign up for free</Link>
+            <Link href="/login" className={styles.logIn}>Log In</Link>
           </div>
         </div>
         <footer>

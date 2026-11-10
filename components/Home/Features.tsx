@@ -1,60 +1,72 @@
-import styles from '../../app/page.module.css'
+import styles from "./home.module.css"
+import type { FeaturesType } from "@/types/types";
 
-type Features = {
-  icon: string,
-  title: string,
-  text: string,
-}[]
+type Props = {
+  role: string;
+};
 
+export default function Features({ role }: Props) {
+  const driverFeatures: FeaturesType = [
+    {
+      icon: "🗺️",
+      title: "Map search",
+      text: "Every spot near your destination, priced.",
+    },
+    {
+      icon: "🔎",
+      title: "Smart filters",
+      text: "Price, distance, covered, EV charging.",
+    },
+    {
+      icon: "🅿️",
+      title: "Live availability",
+      text: "Pick a time. Only free spots show.",
+    },
+  ];
 
-const features: Features = [
-  {
-    icon: "🗺️",
-    title: "Map search",
-    text: "Every spot near your destination, priced.",
-  },
-  {
-    icon: "🔎",
-    title: "Smart filters",
-    text: "Price, distance, covered, EV charging.",
-  },
-  {
-    icon: "🅿️",
-    title: "Live availability",
-    text: "Pick a time. Only free spots show.",
-  },
-  {
-    icon: "📱",
-    title: "QR parking pass",
-    text: "Pay with Stripe, scan at the gate.",
-  },
-  {
-    icon: "⏱️",
-    title: "Flexible booking",
-    text: "Reserve a spot for exactly when you need it.",
-  },
-  {
-    icon: "🔔",
-    title: "Parking reminders",
-    text: "Get notified before your parking time runs out.",
-  },
-];
+  const ownerFeatures: FeaturesType = [
+    {
+      icon: "💰",
+      title: "Earn more",
+      text: "Turn your empty parking spaces into extra income.",
+    },
+    {
+      icon: "📊",
+      title: "Smart management",
+      text: "Manage prices, availability, and bookings in one place.",
+    },
+    {
+      icon: "📈",
+      title: "Live insights",
+      text: "Track occupancy, bookings, and earnings in real time.",
+    },
+  ];
 
+  const features = role === "driver" ? driverFeatures : ownerFeatures;
 
-export default function Features(){
-    return(
-        <section className={styles.homeFeatures}>
-        <h2>Park in seconds, not circles.</h2>
-        <p>Everything a driver needs, from search to the gate.</p>
-        <section className={styles.featureDivs}>
-          {features.map((item,index) => (
-            <div key={index}>
-              <span>{item.icon}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          ))}
-        </section>
+  return (
+    <section className={styles.homeFeatures }>
+      {role === "driver" ? (
+        <>
+          <h2>Park in seconds, not circles.</h2>
+          <p>Everything a driver needs, from search to the gate.</p>
+        </>
+      ) : (
+        <>
+          <h2>Make your parking space pay.</h2>
+          <p>Everything you need to manage spaces and grow your earnings.</p>
+        </>
+      )}
+
+      <section className={styles.featureDivs}>
+        {features.map((item, index) => (
+          <div key={index}>
+            <span>{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
       </section>
-    )
+    </section>
+  );
 }

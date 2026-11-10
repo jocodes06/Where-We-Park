@@ -1,35 +1,19 @@
-import styles from "./comp.module.css"
-import { ParkingSpot } from "@/types/types";
-import Loading from "@/components/Loading";
-import { addFavorites } from "@/lib/driver-favorites";
-import useFavorites from "@/hooks/useFavorites";
-import { removeFavorite } from "@/lib/remove-favorite";
+import styles from "./cards.module.css"
 import Link from "next/link";
+import { ParkingSpot, FavoriteSpot } from "@/types/types";
 
-type SpotCardProps = {
-    parkingSpots : ParkingSpot[];
+type WideCardProps = {
+    spots : ParkingSpot[],
+    handleFavorites : (id: string) => Promise<void>,
+    favorites : FavoriteSpot[]
 }
 
-export default function SpotCard({parkingSpots}:SpotCardProps){
-    
-      const { data: favorites = [], refetch, isLoading, isError, error} = useFavorites();
-    
-      const handleFavorites = async (id: string) => {
-        if (favorites.some((favorite) => favorite.id === id)) {
-          await removeFavorite(id);
-          refetch();
-        } else {
-          await addFavorites(id);
-          refetch();
-        }
-      };
+export default function WideCard({spots, handleFavorites, favorites}: WideCardProps){
 
-      if(isLoading) return <Loading/>
-      if(isError) return <p>{error.message}</p>
 
     return(
         <div className={styles.spotDiv}>
-          {parkingSpots.map((spot: ParkingSpot) => (
+          {spots.map((spot: ParkingSpot) => (
             <Link href={`/driver/spotDetail/${spot.id}`} key={spot.id} className={styles.spot}>
                 <div>
                   <div className={styles.photoContainer}>
