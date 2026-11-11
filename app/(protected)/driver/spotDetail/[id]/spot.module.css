@@ -395,7 +395,235 @@
   padding-top: 1rem
 }
 
-@media (max-width: 1200px) {
-  .layout { grid-template-columns: 1fr; }
-  .bookPanel { position: static; order: -1; }
+
+
+/* Tablet: 769px–1200px */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .gallery,
+    .galleryOne,
+    .galleryTwo {
+        padding: 1.5rem 2rem;
+    }
+
+    .gallery img {
+        min-height: 220px;
+    }
+
+    .galleryOne img,
+    .galleryTwo img {
+        height: 320px;
+    }
+
+    .layout {
+        padding: 0 2rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .bookPanel {
+        position: static;
+        order: -1;
+        max-width: 650px;
+        justify-self: center;
+    }
+}
+
+/* Small tablet: 481px–768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .spotPage > header {
+        height: 80px;
+        padding: 1rem 1.5rem;
+    }
+
+    .gallery,
+    .galleryOne,
+    .galleryTwo {
+        padding: 1rem 1.5rem;
+        gap: 0.4rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1.5fr 1fr;
+    }
+
+    .galleryOne img,
+    .galleryTwo img {
+        height: 280px;
+    }
+
+    .layout {
+        padding: 0 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .bookPanel {
+        position: static;
+        order: -1;
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .titleRow h1 {
+        font-size: 1.7rem;
+    }
+
+    .amenityList {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .section {
+        padding: 1.25rem 0;
+    }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+    .spotPage > header {
+        height: 70px;
+        padding: 0.75rem 1rem;
+    }
+
+    .spotPage header div,
+    .spotPage header a div {
+        gap: 0.5rem;
+    }
+
+    .spotPage header h5 {
+        font-size: 0.85rem;
+    }
+
+    .spotPage > header > div:last-of-type > i,
+    #userLetter {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gallery,
+    .galleryOne,
+    .galleryTwo {
+        padding: 0.75rem;
+        gap: 0.35rem;
+        border-radius: 12px;
+    }
+
+    .gallery {
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: repeat(2, 110px);
+    }
+
+    .galleryOne {
+        grid-template-columns: 1fr;
+    }
+
+    .galleryTwo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .galleryOne img,
+    .galleryTwo img {
+        height: 200px;
+        border-radius: 12px;
+    }
+
+    .layout {
+        padding: 0 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .bookPanel {
+        position: static;
+        order: -1;
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .bookPrice {
+        font-size: 1.4rem;
+    }
+
+    .bookFieldRow {
+        grid-template-columns: 1fr;
+    }
+
+    .bookFieldRow .bookField:nth-child(2) {
+        border-left: 0;
+    }
+
+    .bookField {
+        padding: 0.75rem;
+    }
+
+    .bookField label {
+        font-size: 0.75rem;
+    }
+
+    .bookField input,
+    .bookField select {
+        font-size: 0.9rem;
+        min-height: 28px;
+    }
+
+    .titleRow {
+        align-items: center;
+    }
+
+    .titleRow h1 {
+        font-size: 1.4rem;
+    }
+
+    .favBtn {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+    .metaLine {
+        padding: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+
+    .tags {
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .tagPill {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .section {
+        padding: 1rem 0;
+    }
+
+    .section h3 {
+        font-size: 1.1rem;
+    }
+
+    .section p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .amenityList {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .hoursRow {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .hostCard {
+        padding: 0.75rem 0;
+    }
+
+    .btnWide {
+        padding: 0.9rem 1rem;
+    }
 }

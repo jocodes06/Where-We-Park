@@ -57,7 +57,7 @@ export default function Booking() {
                     </div>
                 </div>
                 ))):(
-                    <p>You currently don't have any requests!</p>
+                    <p className={styles.noRequests}>You currently don't have any requests!</p>
                 )}
         </section>
     )

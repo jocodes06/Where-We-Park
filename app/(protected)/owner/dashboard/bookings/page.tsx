@@ -17,11 +17,6 @@ export default function Bookings() {
 
   return (
     <section className={styles.subpage}>
-      {/* <Header
-        title="Bookings"
-        description="Requests and reservations across all your listings"
-      /> */}
-
       <section className={styles.bookingsDashboard}>
         <h4>NEEDS YOUR RESPONSE</h4>
         {bookingRequests.map(

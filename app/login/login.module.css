@@ -200,47 +200,111 @@
 }
 
 @media (max-width: 480px) {
-    .logInPage > header h1{
+
+    .logInPage {
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .logInPage > header {
+        padding: 1rem;
+        height: auto;
+        min-height: 80px;
+        gap: 0.5rem;
+    }
+
+    .logInPage > header h1 {
         font-size: 1rem;
     }
-    .logInPage > header > div{
-        font-size: 0.5rem;
-        text-align: center;
-        gap:0;
+
+    .logInPage > header > div {
+        font-size: 0.7rem;
+        gap: 0.25rem;
     }
-    .logInPage a{
-        margin:0
-    }
-    .logInPage > header > div > p{
-        font-size: 0.5rem;
+
+    .logInPage > header > div > p ,
+    .logInPage > header > div > a{
+        font-size: 0.6rem;
     }
 
     .logInHero {
         flex-direction: column-reverse;
         justify-content: center;
+        align-items: center;
         height: auto;
         gap: 2rem;
         padding: 1rem;
+        box-sizing: border-box;
+    }
+    .logInHero > div > h2{
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .logInHero > div > p{
+        font-size: 0.8rem;
+        text-align: center;
     }
 
     .logInHero > div {
         width: 100%;
+        align-items: center;
+        gap: 1rem;
     }
-
     .logInHero > div > form {
         width: 100%;
-        padding: 1rem;
-    }
-
-    .logInHero > div > form > h2 {
-        font-size: 1.5rem;
-        width: 100%;
-        text-align: center;
+        padding: 0rem 1rem;
+        box-sizing: border-box;
+        align-items: stretch;
+        gap: 1rem;
     }
 
     .logInHero > div > form > p:first-of-type {
-        font-size: 0.8rem;
-        width: 100%;
+        font-size: 0.85rem;
         text-align: center;
+        width: 100%;
+    }
+
+    .logInHero > div > form > input {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+    }
+
+    .continueWith {
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .continueWith > hr {
+        width: 25%;
+    }
+
+    .continueWithButtons {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .continueWithButtons > button {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .logInPage button {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .dontHaveAnAccount {
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+
+    .dontHaveAnAccount p,
+    .dontHaveAnAccount a {
+        font-size: 0.8rem;
     }
 }

@@ -157,16 +157,36 @@
     }
 }
 
-@media (max-width: 1200px){
+@media (min-width: 769px) and (max-width: 1024px){
     .visualSide{
         min-height: 400px;;
     }
 }
 
-@media (max-width: 780px) {
+@media (min-width: 481px) and (max-width: 768px)  {
     .visualSide {
         min-height: 400px
     }
+}
+
+@media(max-width:480px){
+    .visualSide{
+        height:50%;
+        align-items: flex-start;;
+        min-height: 400px;
+    }
+    .routeText h2{
+        font-size: 2rem;
+        width:100%;
+    }
+    .parkCard{
+        width:100%;
+        flex-direction: column;
+    }
+    .parkCard div p{
+        font-size:0.8rem;
+    }
+
 }
 
 

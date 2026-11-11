@@ -1,9 +1,6 @@
 
-.earningsOverTime,
 .listings,
-.bookings,
-.earnings,
-.payouts {
+.bookings {
     background-color: var(--green-transparent);
     border: 1px solid var(--green-transparent);
     padding: 2rem;
@@ -13,95 +10,6 @@
     justify-content: flex-start;
     width: 49%;
     gap: 1rem;
-}
-
-.earningsOverTime {
-    color: white;
-}
-
-.earningsDiv {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.earningsDiv > div {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    border-radius: 20px;
-    padding: 0.5rem;
-    background-color: var(--green-transparent2);
-}
-
-.earningsDiv > div > h5 {
-    padding: 0.5rem 1rem;
-}
-
-.earningsDiv > div > h5:hover {
-    cursor: pointer;
-    background-color: var(--dark-green);
-    border-radius: 20px;
-}
-
-.earningsByDiv {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem 0rem;
-    border-bottom: 1px solid var(--green-transparent);
-}
-
-.earningsByDiv > div {
-    width: 40%;
-    gap: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.earningsByDiv > .right {
-    justify-content: flex-end;
-}
-
-.earningsByDiv span {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: var(--soft-green);
-}
-
-.earningsOverTime > table {
-    width: 100%;
-}
-
-.earningsOverTime th {
-    text-align: left;
-    padding: 1rem 0rem;
-    border-bottom: 1px solid var(--green-transparent);
-    color: var(--gray-green);
-}
-
-.earningsOverTime td {
-    text-align: left;
-    padding: 1rem 0rem;
-    border-bottom: 1px solid var(--green-transparent);
-}
-
-.pending,
-.paid {
-    border-radius: 20px;
-    border: none;
-    padding: 0.5rem;
-    font-weight: 700;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .pending {
@@ -115,9 +23,7 @@
 }
 
 .listingDiv,
-.bookingDiv,
-.earningDiv,
-.payoutDiv {
+.bookingDiv {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -133,8 +39,7 @@
 }
 
 .listingDiv h5,
-.bookingDiv h5,
-.payoutDiv > h5:last-of-type {
+.bookingDiv h5{
     font-weight: 600;
 }
 
@@ -181,15 +86,12 @@
 }
 
 .listings > div:last-of-type,
-.bookings > div:last-of-type,
-.payoutDiv:last-of-type {
+.bookings > div:last-of-type {
     border: none;
 }
 
 .listingDiv > a,
-.bookingDiv > a,
-.earningDiv > a,
-.payoutDiv > a {
+.bookingDiv > a{
     font-weight: 700;
     color: var(--soft-green);
     text-decoration: underline;
@@ -223,39 +125,175 @@
     border: none;
 }
 
-@media (max-width: 1500px) {
-    .earningsOverTime,
+/* Tablet: 769px–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
     .listings,
-    .bookings,
-    .earnings,
-    .payouts {
-        flex-direction: column;
+    .bookings {
         width: 100%;
+        padding: 1.5rem;
     }
 
-    .listingPrices,
-    .bookingButtons {
-        width: 20%;
-    }
-}
-
-@media (max-width: 780px) {
-    .earningsOverTime,
-    .listings,
-    .bookings,
-    .earnings,
-    .payouts {
-        width: 100%;
-    }
-
-    .listingInfo,
-    .bookingInfo {
-        width: 50%;
+    .listingDiv > div,
+    .bookingDiv > div {
+        width: calc(100% - 90px);
+        gap: 1rem;
     }
 
     .listingPrices,
     .bookingButtons {
         width: 40%;
     }
+
+    .bookingButtons > button {
+        padding: 0.5rem 0.75rem;
+    }
 }
 
+/* Small tablet: 481px–768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .listings,
+    .bookings {
+        width: 100%;
+        padding: 1.25rem;
+    }
+
+    .listingDiv,
+    .bookingDiv {
+        gap: 0.75rem;
+    }
+
+    .listingDiv > img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .bookingDiv > img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .listingDiv > div,
+    .bookingDiv > div {
+        width: calc(100% - 75px);
+        flex: 1;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .listingInfo,
+    .bookingInfo {
+        gap: 0.4rem;
+        min-width: 0;
+    }
+
+    .listingPrices,
+    .bookingButtons {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .listingPrices span {
+        padding: 0.4rem 0.75rem;
+    }
+
+    .bookingButtons > button {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .listings,
+    .bookings {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .listingDiv,
+    .bookingDiv {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.85rem 0;
+    }
+
+    .listingDiv > img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+    }
+    .listingDiv > h4, .listingDiv > a,
+    .bookingDiv > h4, .bookingDiv > a{
+        font-size: 0.8rem;
+    }
+
+    .listingInfo > h5{
+        font-size: 0.5rem;
+
+    }
+
+
+    .bookingDiv > img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .noRequests{
+        font-size: 0.8rem;
+    }
+
+    .listingDiv > div,
+    .bookingDiv > div {
+        width: calc(100% - 75px);
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .listingInfo,
+    .bookingInfo {
+        width: 100%;
+        gap: 0.3rem;
+    }
+
+    .listingInfo h5,
+    .bookingInfo h5 {
+        font-size: 0.9rem;
+    }
+
+    .listingInfo p,
+    .bookingInfo p {
+        font-size: 0.8rem;
+    }
+
+    .listingPrices,
+    .bookingButtons {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .listingPrices span {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.8rem;
+    }
+
+    .listingInfo h5,
+    .bookingInfo h5 {
+        font-size: 0.8rem;
+    }
+
+    .listingPrices h5{
+        font-size: 0.8rem;
+    }
+
+    .bookingButtons > button {
+        flex: 1;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}

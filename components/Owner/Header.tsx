@@ -19,8 +19,6 @@ export default function Header({ title, description, buttonText }: PageHeaderPro
                 <p>{description}</p>
             </div>
             {buttonText === "+ Add a spot" && <Link href="/owner/addaspot">{buttonText}</Link>}
-            {buttonText === "Payment settings" && <button className={styles.paymentSettingsButton}>
-                {buttonText}</button>}
         </section>
     )
 

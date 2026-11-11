@@ -5,7 +5,6 @@ import Link from "next/link"
 import AnimatedRoute2 from "@/components/LogIn/AnimatedRoute2";
 import { useRouter } from "next/navigation";
 import { userAuth } from "@/lib/auth";
-
 import { useQueryClient } from "@tanstack/react-query";
 
 
@@ -16,7 +15,6 @@ export default function Login() {
     const router = useRouter();
     const [email, setEmail] = React.useState<string>("");
     const [password, setPassword] = React.useState<string>("");
-
 
     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();

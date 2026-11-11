@@ -347,242 +347,265 @@
     color:white;
 }
 
-/* earnings */
-
-
-.subpage .paymentSettingsButton{
-    padding: 1rem;
-    border-radius: 20px;
-    background-color: transparent;
-    color: white;
-    border:2px solid var(--green-transparent);
-    cursor: pointer;
-    font-weight: 500;
-}
-.subpage{
-        min-height: 100dvh;
-}
-
-/* reviews */
-
-.allReviews{
-    display: flex;
-    width:100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    background-color: var(--green-transparent);
-    border: 1px solid var(--green-transparent);
-    padding: 2rem;
-    border-radius: 20px;
-    gap:1rem;
-}
-
-.allReviews > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:90%;
-    gap:1rem;
-}
-
-
-.allReviews > div:first-of-type{
-    border-right: 1px solid var(--green-transparent);
-    width:10%;
-}
-
-
-.allReviews h2 {
-    text-align: center;
-}
-
-.reviewBreakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-
-}
-
-.reviewRow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-}
-
-.reviewRow > span:first-child {
-    width: 45px;
-    flex-shrink: 0;
-}
-
-.reviewRow > span:last-child {
-    width: 25px;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.progressBar {
-    flex: 1;
-    min-width: 0;
-    height: 8px;
-    background: var(--green-transparent);
-    border-radius: 999px;
-    overflow: hidden;
-}
-
-.progress {
-    height: 100%;
-    background: var(--sunny-yellow);
-    border-radius: 999px;
-}
-
-.reviews{
-    display: flex;
-    align-items: center;
-    width:100%;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.reviewDiv{
-    display: flex;
-    width:100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    background-color: var(--green-transparent);
-    border: 1px solid var(--green-transparent);
-    padding: 2rem;
-    border-radius: 20px;
-    gap:1rem;
-}
-
-.reviewDiv > div{
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.reviewLeft{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap:1rem
-}
-
-
-.reviewDiv button{
-    padding: 1rem 0.5rem;
-    width:20%;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;  
-    background-color: transparent;
-    color:white;
-    border: 2px solid var(--green-transparent);
-}
 
 
 
-
-@media (max-width: 1500px){
-    .listingDivs > div{
-        height:500px;
-        width:40%;
-    }
-    .dashboard{
-        width:100%;
-    }
-    .statsDashboard{
-        flex-wrap: wrap;
-        gap:1rem;
-    }
-    .statsDashboard > div{
-        width:100%;
-    }
-    .allReviews > div{
-        width:80%;
-    }
-    .allReviews > div:first-of-type{
-        width:20%;
+@media (min-width: 769px) and (max-width: 1024px) {
+    .listedSpots,
+    .addSpotDiv {
+        width: 48%;
+        height: 480px;
     }
 
-}
-
-@media (max-width: 780px){
-    .addSpotDiv{
-        width:100%;
+    .cardText {
+        padding: 1.5rem;
     }
-    .statsDashboard{
-        flex-direction: row;
-        gap:1rem;
+
+    .cardImage {
+        height: 180px;
+    }
+
+    .filtersDashboard {
+        gap: 1rem;
         flex-wrap: wrap;
     }
-    .statsDashboard > div{
-        width:45%;
+
+    .bookingDiv {
+        padding: 1.5rem;
+        gap: 1rem;
     }
-    .dashboard{
-        gap:2rem;
+
+    .bookingDivRight {
+        gap: 1.5rem;
     }
-    .listedSpots{
-        width:100%;
+
+    .bookingDivRight > div {
+        gap: 0.5rem;
     }
-    .ownerMain header div {
-        width:50%;
+
+    .bookingDivRight .buttonsDiv {
+        gap: 0.5rem;
     }
+
+    .buttonsDiv > button {
+        padding: 0.75rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .listedSpots,
+    .addSpotDiv {
+        width: 48%;
+        height: 450px;
+    }
+
+    .cardImage {
+        height: 160px;
+    }
+
+
+
+    .activeStatus {
+        top: 8px;
+        left: 8px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .filtersDashboard {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .filtersDashboard > button {
+        padding: 0.5rem 0.75rem;
+    }
+
     .bookingDiv {
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+        align-items: stretch;
+        padding: 1.25rem;
         gap: 1rem;
     }
 
-    .bookingDivRight,
-    .bookingDivLeft {
-        flex-direction: column;
+    .bookingDivLeft,
+    .bookingDivRight {
+        width: 100%;
+    }
+
+    .bookingDivRight {
+        justify-content: space-between;
+        flex-wrap: wrap;
         gap: 1rem;
     }
 
-    .bookingDiv > .bookingDivLeft > div,
-    .bookingDiv > .bookingDivRight > div {
-        align-items: flex-start;
+    .bookingDivRight > div {
+        flex-wrap: wrap;
     }
 
-    .bookingDiv > div > div {
+    .bookingDivRight .buttonsDiv {
+        width: 100%;
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .buttonsDiv > button {
+        flex: 1;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .subpageHeader > div>h1{
+        font-size: 1rem;
+    }
+    .subpageHeader > div > p{
+        font-size: 0.7rem;
+    }
+    .subpageHeader > a{
+        font-size: 0.7rem;
+        text-align: center;
+    }
+    .statsDashboard > div{
+        width: 100%;
+    }
+    .filtersDashboard {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        padding: 0.75rem 0;
+    }
+
+    .filtersDashboard > button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .listedSpots,
+    .addSpotDiv {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+
+    .cardImage {
+        height: 190px;
+    }
+
+    .cardText {
+        padding: 1.25rem;
+        gap: 0.75rem;
+    }
+
+    .cardText > h5, .cardPrice > h5{
+        font-size: 0.8rem;
+    }
+
+    .cardText > p , .cardPrice > p, .cardInfo > p{
+        font-size: 0.7rem;
+    }
+
+
+    .activeStatus {
+        top: 8px;
+        left: 8px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .cardPrice {
+        gap: 0.5rem;
+    }
+
+    .cardInfo p {
+        overflow-wrap: anywhere;
+    }
+
+    .cardButtons > button {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .addSpotDiv {
+        min-height: 220px;
+    }
+
+    .bookingDiv {
         flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .bookingDivLeft,
+    .bookingDivRight {
+        width: 100%;
+    }
+
+    .bookingDivLeft > div {
+        gap: 0.75rem;
+    }
+
+    .bookingDivLeft > div > div > h5,
+    .bookingDivRight > div > div >h5{
+        font-size: 0.8rem;
+    }
+    .bookingDivLeft > div > div > p,
+    .bookingDivRight > div > div >p{
+        font-size: 0.7rem;
+    }
+
+    .pending{
+        font-size: 0.7rem;
+    }
+    
+    .bookingDiv > h5{
+        font-size: 0.8rem;
+        background-color: red;
+    }
+
+    .bookingDivRight {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .bookingsDashboard > p{
+        font-size: 0.7rem;
+    }
+
+    .bookingDivRight > div {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .bookingDivRight > div > div {
         text-align: left;
     }
 
-    .bookingDiv > .bookingDivRight {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
+  
 
-    .bookingDiv > .bookingDivRight > .buttonsDiv {
-        flex-direction: row;
-    }
-
-    .bookingDiv > .bookingDivRight > div > button {
+    .bookingDivRight .buttonsDiv {
+        display: flex;
         width: 100%;
-    }
-    .allReviews > div{
-        width:70%;
-    }
-    .allReviews > div:first-of-type{
-        width:30%;
+        gap: 0.5rem;
     }
 
+    .buttonsDiv > button {
+        flex: 1;
+        width: auto;
+        padding: 0.75rem 0.5rem;
+    }
 
+    .bookingDiv h3 {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+    .bookingsDashboard,
+    .reviewsDashboard {
+        gap: 0.75rem;
+    }
 }
-
-

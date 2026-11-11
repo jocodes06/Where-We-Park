@@ -7,8 +7,6 @@ import Loading from "@/components/Loading";
 import Header from "@/components/Header";
 
 
-
-
 export default function Owner({children}: {
     children:React.ReactNode;
 }){
@@ -16,8 +14,6 @@ export default function Owner({children}: {
 
     if(isLoading) return <Loading/>
     if(isError) return <p>{error.message}</p>
-
-    console.log(user)
 
 
     return(

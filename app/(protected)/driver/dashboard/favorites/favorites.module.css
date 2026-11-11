@@ -86,9 +86,131 @@
 }
 
 
+@media (min-width: 769px) and (max-width: 1024px) {
+    .favorites {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
 
-@media (max-width: 780px){
-  .favoriteSpots{
-    width:100%;
-  }
+    .favoriteSpots {
+        width: 45%;
+    }
+
+    .cardImage {
+        height: 180px;
+    }
+
+    .cardText {
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .cardText h5 {
+        font-size: 0.95rem;
+    }
+
+    .cardText p {
+        font-size: 0.85rem;
+    }
+
+    .favoriteSpots button {
+        padding: 0.85rem;
+    }
+}
+
+
+/* TABLETS */
+@media (min-width: 481px) and (max-width: 768px) {
+    .favorites {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .favoriteSpots {
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .cardImage {
+        width: 40%;
+        height: auto;
+        min-height: 200px;
+        border-radius: 12px 0 0 12px;
+    }
+
+    .cardText {
+        width: 60%;
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .cardText h5 {
+        font-size: 0.9rem;
+    }
+
+    .cardText p {
+        font-size: 0.8rem;
+    }
+
+    .activeStatus {
+        top: 8px;
+        left: 8px;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .favoriteSpots button {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .favorites {
+        padding: 1rem;
+        gap: 1.25rem;
+        justify-content: center;
+    }
+
+    .favoriteSpots {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .cardImage {
+        height: 170px;
+        border-radius: 12px;
+    }
+
+    .cardText {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+
+    .cardText h5 {
+        font-size: 0.9rem;
+    }
+
+    .cardText p {
+        font-size: 0.8rem;
+    }
+
+    .cardPrice {
+        gap: 0.5rem;
+    }
+
+    .activeStatus {
+        top: 8px;
+        left: 8px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .favoriteSpots button {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
 }

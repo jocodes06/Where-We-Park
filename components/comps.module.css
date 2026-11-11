@@ -69,11 +69,13 @@
     
 }
 
-.navigation h5{
-    color:var(--gray-green);
-    margin:0;
-    cursor: pointer;
+.navigation a {
+    color: var(--gray-green);
+    font-size: 1rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
+
 
 .navigation a {
     color:var(--gray-green);
@@ -88,21 +90,131 @@
 
 
 
-@media (max-width: 1200px) {
+/* Tablet: 769px–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
     .header {
         padding: 1.25rem;
+    }
+
+    .userInfo {
+        width: 40%;
         gap: 1rem;
     }
 
-}
-
-@media (max-width: 768px) {
-    .userInfo{
-        width:50%;
-    }
-    .userInfo > div{
-        width:50%;
+    .userInfo > div {
+        width: 65%;
     }
 
+    .navigation {
+        gap: 2rem;
+        padding: 0 1.25rem;
+    }
 }
 
+/* Small tablet: 481px–768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 85px;
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .userInfo {
+        width: auto;
+        gap: 0.75rem;
+    }
+
+    .userLetter {
+        width: 40px;
+        height: 40px;
+    }
+
+    .userInfo > div {
+        width: auto;
+        display: flex;
+        gap: 0.25rem;
+        padding: 0.35rem;
+    }
+
+    .userInfo > div > button {
+        padding: 0.5rem;
+    }
+
+    .navigation {
+        padding: 0 1rem;
+        gap: 1rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .navigation a {
+        flex-shrink: 0;
+        padding: 1rem 0.5rem;
+    }
+
+    .navigation .activeLink {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+    .header {
+        height: auto;
+        min-height: 75px;
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 0.8rem;
+    }
+
+    .userInfo {
+        width: auto;
+        gap: 0.5rem;
+    }
+
+    .userLetter {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .userInfo > div {
+        width: auto;
+        display: flex;
+        gap: 0.2rem;
+        padding: 0.25rem;
+    }
+
+    .userInfo > div > button {
+        width: auto;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    .logOutButton {
+        padding: 0.4rem;
+    }
+
+    .navigation {
+        gap: 0.75rem;
+        padding: 0 0.75rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: thin;
+    }
+
+    .navigation   a {
+        font-size: 0.6rem;
+    }
+
+    .navigation .activeLink {
+        padding: 0.85rem 0.4rem;
+    }
+}
