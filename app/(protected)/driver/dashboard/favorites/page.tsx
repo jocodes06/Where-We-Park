@@ -2,6 +2,7 @@
 import styles from "./favorites.module.css";
 import useFavorites from "@/hooks/useFavorites";
 import Loading from "@/components/Loading";
+import Link from "next/link";
 
 export default function Favorites() {
   const {
@@ -14,7 +15,7 @@ export default function Favorites() {
   if (isLoading) return <Loading />;
   if (isError) return <p>{error.message}</p>;
 
-
+  console.log(favoriteSpots);
 
   return (
     <main className={styles.favorites}>
@@ -35,16 +36,29 @@ export default function Favorites() {
             <p>
               {spot.city} · {spot.spot_type}
             </p>
+            <div className={styles.cardAmenities}>
+              {spot.amenities?.map((amenity) => (
+                <div key={amenity.type}>
+                  <p>{amenity.icon}</p>
+                  <p>{amenity.type}</p>
+                </div>
+              ))}
+            </div>
             <div className={styles.cardPrice}>
               <h5>Price</h5>
-              <p><span>${spot.price_per_hours}</span>/hr</p>
+              <p>
+                <span>${spot.price_per_hours}</span>/hr
+              </p>
             </div>
-              <button>Book now</button>
+            <Link href={`/driver/spotDetail/${spot.id}`} className={styles.bookNowButton}>
+              Book now
+            </Link>
           </div>
         </div>
       ))}
-      {favoriteSpots.length === 0 &&
-      <p>You currently don't have any favorite spots!</p>}
+      {favoriteSpots.length === 0 && (
+        <p>You currently don't have any favorite spots!</p>
+      )}
     </main>
   );
 }

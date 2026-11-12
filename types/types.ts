@@ -45,7 +45,6 @@ export type ParkingSpotsContextType = {
     refresh: () => Promise<void>;
 };
 
-
 export type ParkingSpot = {
   id: string;
   host_name:string,
@@ -86,9 +85,6 @@ export type FavoriteSpot = {
   title: string,
   text: string,
 }[]
-
-
-
 
 
 export type parkingSpotForm = {

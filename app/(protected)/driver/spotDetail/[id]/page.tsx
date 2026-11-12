@@ -1,25 +1,22 @@
 "use client"
-import React from "react"
 import { useParams } from "next/navigation"
 import styles from "./spot.module.css"
 import Link from "next/link"
-import { requestBooking } from "@/lib/bookRequest"
 import useFavorites from "@/hooks/useFavorites"
 import { addFavorites } from "@/lib/driver-favorites"
 import { removeFavorite } from "@/lib/remove-favorite"
-import type { Booking } from "@/types/types"
 import type { ParkingSpot } from "@/types/types"
 import type { AmenityType } from "@/types/types"
 import type { Weekday } from "@/types/types"
 import useParkingSpots from "@/hooks/useParkingSpots"
 import useCurrentUser from "@/hooks/useCurrentUser"
+import BookingForm from "@/components/Driver/BookingForm/page"
 
 
 export default function spotDetail() {
   
   const {data : favorites = [],refetch} = useFavorites();
   const {data : parkingSpots = [], isLoading, isError, error } = useParkingSpots()
-
   const {data: user} = useCurrentUser()
   const { id } = useParams<{ id: string }>()
 
@@ -27,97 +24,13 @@ export default function spotDetail() {
 
   const today = new Date();
 
-  const formattedDate = [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, "0"),
-    String(today.getDate()).padStart(2, "0"),
-  ].join("-")
-
+ 
   const day = today.getDay() - 1;
   const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const todayDay = weekday.find((name, index) => index === day)
 
-  const [bookings, setBookings] = React.useState<Booking>({
-    id: "",
-    booking_date: formattedDate,
-    duration_type: "hourly",
-    duration_hours: 1,
-    start_time: "14:00",
-    end_time: "15:00",
-    parking_cost: 0,
-    service_fee: 0,
-    total_amount: 0,
-  })
 
 
-  const handleStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const start = e.target.value;
-
-    setBookings((prev) => ({
-      ...prev,
-      start_time: start,
-      end_time: `${String(
-        (Number(start.slice(0, 2)) + prev.duration_hours) % 24
-      ).padStart(2, "0")}:${start.slice(3, 5)}`,
-    }));
-  };
-
-  const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const end = e.target.value;
-
-    const startHour = Number(bookings.start_time.slice(0, 2));
-    const endHour = Number(end.slice(0, 2));
-
-    setBookings((prev) => ({
-      ...prev,
-      end_time: end,
-      duration_hours: (endHour - startHour + 24) % 24,
-    }));
-  };
-
-  const handleDurationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const duration = Number(e.target.value);
-
-    setBookings((prev) => ({
-      ...prev,
-      duration_hours: duration,
-      duration_type: duration === 24 ? "all_day" : "hourly",
-      end_time: `${String(
-        (Number(prev.start_time.slice(0, 2)) + duration) % 24
-      ).padStart(2, "0")}:${prev.start_time.slice(3, 5)}`,
-    }));
-  };
-
-  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
-    e.preventDefault();
-    console.log("submited");
-
-    if (!spot) {
-      alert("Spot not found");
-      return;
-    }
-
-    const parking_cost = spot.price_per_hours * bookings.duration_hours
-    const service_fee = parking_cost * 0.25
-    const total_amount = parking_cost + service_fee
-
-    try {
-      const result = await requestBooking({
-        ...bookings,
-        id: spot.id,
-        parking_cost,
-        service_fee,
-        total_amount
-      })
-
-      alert("Booking request sent successfully!");
-    } catch (error) {
-      console.error(error);
-      alert(
-        "failed"
-      )
-    }
-  }
 
   const handleFavorites = async (id: string) => {
     try{
@@ -138,13 +51,15 @@ export default function spotDetail() {
   if(isLoading) return <p>Is loading...</p>
   if(isError) return <p>{error.message}</p>
 
+  if(!spot) return <p>No spot</p>
+
   return (
     <section className={styles.spotPage}>
       <header>
         <Link href={"/driver/dashboard"}>
           <div>
             <i className="fa-solid fa-arrow-left-long"></i>
-            <h5>Back to Search</h5>
+            <h5>Back</h5>
           </div>
         </Link>
         <div>
@@ -253,71 +168,7 @@ export default function spotDetail() {
             </div>
           </div>
         </div>
-
-        {/* booking - section */}
-
-
-        {spot &&
-          <form className={styles.bookPanel} onSubmit={handleSubmit}>
-            <div className={styles.bookPrice}>${spot?.price_per_hours}
-              <small>/hr</small>
-            </div>
-            <div className={styles.bookGrid}>
-              <div className={styles.bookFieldRow}>
-                <div className={styles.bookField}>
-                  <label htmlFor="date">Date</label>
-                  <input id="date" type="date" value={bookings.booking_date} 
-                    onChange={(e) => setBookings(prev => ({ ...prev, booking_date: e.target.value }))} />
-                </div>
-                <div className={styles.bookField}>
-                  <label htmlFor="dur">Duration</label>
-                  <select
-                    id="dur"
-                    value={String(bookings.duration_hours)}
-                    onChange={handleDurationChange}>
-
-                    <option value="1">1 hour</option>
-                    <option value="3">3 hours</option>
-                    <option value="4">4 hours</option>
-                    <option value="24">All day</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className={styles.bookFieldRow}>
-                <div className={styles.bookField}>
-                  <label htmlFor="start">Start time</label>
-                  <input id="start" type="time" value={bookings.start_time}
-                    onChange={handleStartChange} />
-                </div>
-                <div className={styles.bookField}>
-                  <label htmlFor="end">End time</label>
-                  <input id="end" type="time" value={bookings.end_time}
-                    onChange={handleEndChange} />
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.availNote}>
-              <i className="fa-solid fa-circle-check"></i> Available for your selected time
-            </div>
-
-            <div className={styles.costBreakdown}>
-              <div className={styles.row}><span>${spot?.price_per_hours} × {bookings.duration_hours} hours</span>
-                <span>$ {spot?.price_per_hours * bookings.duration_hours}</span></div>
-              <div className={styles.row}>
-                <span>Service fee</span><span>$ {spot?.price_per_hours * bookings.duration_hours * 0.25}</span></div>
-              <div className={`styles.row ${styles.total}`}>
-                <span>Total</span>
-                <span>$
-                  {(spot?.price_per_hours * bookings.duration_hours +
-                    spot?.price_per_hours * bookings.duration_hours * 0.25).toFixed(2)}
-                </span></div>
-            </div>
-
-            <button className={styles.btnWide} type="submit">Request to book</button>
-          </form>}
-
+        <BookingForm spot={spot}/>
       </div >
     </section >
   )

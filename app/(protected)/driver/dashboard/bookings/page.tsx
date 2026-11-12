@@ -2,10 +2,19 @@
 import styles from "./booking.module.css";
 import useBookingRequests from "@/hooks/useBookingRequests";
 import Loading from "@/components/Loading";
+import cancelBookRequest from "@/lib/cancelBookRequest";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function MyBookings() {
   const today = new Date();
   const { data: bookingRequests = [], isLoading, isError, error } = useBookingRequests();
+
+  const queryClient = useQueryClient();
+  const cancelMutation = useMutation({
+    mutationFn: cancelBookRequest,
+    onSuccess: () =>
+      queryClient.invalidateQueries({queryKey:["bookingRequests"]})
+  })
 
   if(isLoading) return <Loading/>
   if(isError) return <p>{error.message}</p>
@@ -33,7 +42,8 @@ export default function MyBookings() {
                 </div>
                 <div className={styles.side}>
                   <span className={styles.price}>${booking.parking_cost}</span>
-                  <button className={styles.cancel} type="button">
+                  <button className={styles.cancel} type="button"
+                  onClick={()=> cancelMutation.mutate(booking.id)}>
                     Cancel request
                   </button>
                 </div>
@@ -108,10 +118,16 @@ export default function MyBookings() {
                 </div>
                 <div className={styles.side}>
                   <span className={styles.price}>${booking.parking_cost}</span>
+                  <button id="delete-icon" type="button"
+                  onClick={()=> cancelMutation.mutate(booking.id)}>
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
                 </div>
               </article>
             ),
         )}
+        {!bookingRequests.some((booking)=> booking.status === "declined") &&
+        <p>You don't have any declined bookings</p>}
       </main>
   );
 }

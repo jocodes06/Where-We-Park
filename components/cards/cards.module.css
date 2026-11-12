@@ -122,6 +122,30 @@
     font-size: 1.25rem;
 }
 
+/* success - card */
+.successCard {
+  max-width: 360px;
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  color: #fff;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
 
 /* TABLETS / SMALL LAPTOPS */
 @media (min-width: 769px) and (max-width: 1024px) {

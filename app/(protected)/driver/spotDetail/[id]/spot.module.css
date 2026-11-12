@@ -298,19 +298,21 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.bookFieldRow .bookField:nth-child(2) {
-  border-left: 1px solid var(--green-transparent);
+.bookFieldRow:first-child {
+  grid-template-columns: 1fr;
 }
 
 .bookField {
   padding: 0.625rem 0.875rem;
-  border-top: 1px solid var(--green-transparent);
+
 }
 
 .bookField:first-child,
 .bookFieldRow:first-child .bookField {
   border-top: 0;
 }
+
+
 
 .bookField label {
   display: block;

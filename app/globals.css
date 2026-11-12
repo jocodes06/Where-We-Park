@@ -69,5 +69,16 @@ button{
 
 #error{
   color:red;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+#delete-icon{
+  color:rgb(104, 35, 35);
+  cursor: pointer;
+  transition:all 0.2s ease-in;
+}
+
+#delete-icon:hover{
+  color:white;
 }

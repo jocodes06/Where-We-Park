@@ -281,7 +281,7 @@
   .titleRow {
     width: 100%;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.5rem
   }
 
   .titleRow h5 {

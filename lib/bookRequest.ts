@@ -14,9 +14,11 @@ export async function requestBooking(booking: Booking){
     const data = await response.json();
 
     if(!response.ok){
-       alert("Failed to send booking request");
+       throw new Error("There has been an error");
     }
 
     return data;
 
 }
+
+
