@@ -3,7 +3,7 @@ WhereWePark is a parking rental platform that connects parking spot owners with 
 
 ![WhereWePark Screenshot](./public/screenshot.png)
 
-🔗 **Live demo:** 
+🔗 **Live demo:** https://where-we-park.vercel.app/
 
 ## Tech Stack
 
