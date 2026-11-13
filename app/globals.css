@@ -73,12 +73,54 @@ button{
   font-size: 0.8rem;
 }
 
-#delete-icon{
+#delete-button{
   color:rgb(104, 35, 35);
   cursor: pointer;
   transition:all 0.2s ease-in;
+  background-color: rgb(190, 108, 108);
+  padding: 1rem;
+  border-radius: 20px;
 }
 
-#delete-icon:hover{
+#delete-button:hover{
   color:white;
+}
+
+#pending,
+#confirmed,
+#completed,
+#declined,
+#cancel,
+#review {
+  border-radius: 20px;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+#cancel {
+  background-color: var(--dark-green);
+  color: var(--soft-green);
+  cursor: pointer;
+}
+
+
+#pending {
+  background-color: var(--dark-yellow);
+  color: var(--sunny-yellow);
+}
+
+#confirmed {
+  background-color: var(--green-transparent);
+  color: var(--soft-green);
+}
+
+#completed {
+  background-color: var(--green-transparent);
+  color: var(--soft-blue);
+}
+
+#declined {
+  background-color: rgb(93, 25, 25);
+  color: red;
 }
