@@ -3,8 +3,13 @@ import styles from "./review.module.css";
 import { useParams } from "next/navigation";
 import useBookingRequests from "@/hooks/useBookingRequests";
 import Link from "next/link";
+import React from "react";
+import AddReview from "@/lib/addReview";
+import type { Review } from "@/types/types";
+import { useRouter } from "next/navigation";
 
 export default function LeaveReview() {
+  const router = useRouter();
   const {
     data: bookings = [],
     isLoading,
@@ -14,6 +19,28 @@ export default function LeaveReview() {
   const { id } = useParams<{ id: string }>();
   const booking = bookings.find((item) => item.id === id);
   const today = new Date();
+
+  const [reviewForm, setReviewForm] = React.useState<Review>({
+    lot_id: "",
+    stars: 0,
+    tags: [],
+    description: "",
+  });
+
+  console.log(reviewForm);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!booking) return;
+
+    try {
+      await AddReview({ ...reviewForm, lot_id: booking.lot_id });
+      router.push("/driver/dashboard")
+    } catch (error) {
+      console.error("Review submission failed:", error);
+    }
+  };
 
   if (isLoading) return <p>Loading booking...</p>;
   if (isError) return <p>{error.message}</p>;
@@ -55,7 +82,7 @@ export default function LeaveReview() {
 
             <div className={styles.details}>
               <div className={styles.detail}>
-                <label>Date</label>
+                <label>DATE</label>
                 <span>
                   {new Date(booking.booking_date).toLocaleDateString("en-US", {
                     weekday: "short",
@@ -65,68 +92,82 @@ export default function LeaveReview() {
                 </span>
               </div>
               <div className={styles.detail}>
-                <label>Time</label>
+                <label>TIME</label>
                 <span>
                   {booking.start_time.slice(0, 5)}–{" "}
                   {booking.end_time.slice(0, 5)}{" "}
                 </span>
               </div>
               <div className={styles.detail}>
-                <label>Duration</label>
+                <label>DURATION</label>
                 <span>{Number(booking.duration_hours).toFixed(0)} hours</span>
               </div>
               <div className={styles.detail}>
-                <label>Total paid</label>
+                <label>TOTAL PAID</label>
                 <span>${booking.parking_cost}</span>
               </div>
             </div>
           </div>
         </aside>
 
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <h3>How was your stay?</h3>
 
           <div className={styles.stars}>
-            <input type="radio" id="star5" name="rating" value="5" />
-            <label htmlFor="star5" aria-label="5 stars">
-              ★
-            </label>
-            <input type="radio" id="star4" name="rating" value="4" />
-            <label htmlFor="star4" aria-label="4 stars">
-              ★
-            </label>
-            <input type="radio" id="star3" name="rating" value="3" />
-            <label htmlFor="star3" aria-label="3 stars">
-              ★
-            </label>
-            <input type="radio" id="star2" name="rating" value="2" />
-            <label htmlFor="star2" aria-label="2 stars">
-              ★
-            </label>
-            <input type="radio" id="star1" name="rating" value="1" />
-            <label htmlFor="star1" aria-label="1 star">
-              ★
-            </label>
+            {[5, 4, 3, 2, 1].map((star) => (
+              <React.Fragment key={star}>
+                <input
+                  type="radio"
+                  id={`star${star}`}
+                  name="rating"
+                  value={star}
+                  checked={reviewForm.stars === star}
+                  onChange={() =>
+                    setReviewForm((prev) => ({ ...prev, stars: star }))
+                  }
+                />
+                <label htmlFor={`star${star}`} aria-label={`${star} stars`}>
+                  ★
+                </label>
+              </React.Fragment>
+            ))}
           </div>
 
           <h3>What stood out?</h3>
           <div className={styles.chips}>
-            <input type="checkbox" id="easy" />
-            <label htmlFor="easy">Easy to find</label>
-            <input type="checkbox" id="safe" />
-            <label htmlFor="safe">Felt safe</label>
-            <input type="checkbox" id="accurate" />
-            <label htmlFor="accurate">As described</label>
-            <input type="checkbox" id="host" />
-            <label htmlFor="host">Helpful host</label>
+            {["Easy to find", "Felt safe", "As described", "Helpful host"].map(
+              (tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  className={
+                    reviewForm.tags.includes(tag) ? styles.selected : ""
+                  }
+                  onClick={() =>
+                    setReviewForm((prev) => ({
+                      ...prev,
+                      tags: prev.tags.includes(tag)
+                        ? prev.tags.filter((t) => t !== tag)
+                        : [...prev.tags, tag],
+                    }))
+                  }
+                >
+                  {tag}
+                </button>
+              ),
+            )}
           </div>
-
           <h3>Tell others about it</h3>
           <textarea
             className={styles.textarea}
             placeholder="What was the spot like? Anything future drivers should know?"
+            onChange={(e) =>
+              setReviewForm((prev) => ({
+                ...prev,
+                description: e.target.value,
+              }))
+            }
           ></textarea>
-
           <button className={styles.submitBtn} type="submit">
             Submit review
           </button>

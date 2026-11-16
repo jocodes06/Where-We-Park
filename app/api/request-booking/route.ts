@@ -79,6 +79,7 @@ export async function GET(req: Request) {
 
     COALESCE(photos.photos, '[]'::json) AS photos,
 
+    bk.lot_id,
     bk.booking_date,
     bk.duration_type AS booking_type,
     bk.duration_hours,

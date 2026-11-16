@@ -32,7 +32,6 @@ export async function getFavorites(){
 
         const data = await response.json();
 
-// SAFETY CHECK: If it's an array return an empty array, if it is return favorites
 
         return {
             favoriteSpots: Array.isArray(data.favoriteSpots) ? data.favoriteSpots : [],

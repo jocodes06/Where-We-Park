@@ -18,9 +18,17 @@ export type User = {
     role: "DRIVER" | "OWNER";
 }
 
+export type Review = {
+   lot_id: string,
+   description:string,
+   stars: number,
+   tags: string[];
+}
+
 
 export type BookingRequest = {
     id:string;
+    lot_id:string,
     driver_first_name: string;
     driver_last_name: string;
     lot_name: string;

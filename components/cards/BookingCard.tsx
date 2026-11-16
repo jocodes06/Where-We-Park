@@ -8,8 +8,12 @@ type BookingCard = {
   cancelMutation?: UseMutationResult<unknown, Error, string>;
 };
 
+import UseReviews from "@/hooks/useReviews";
+
 export default function BookingCard({ booking, cancelMutation }: BookingCard) {
   const today = new Date();
+
+  const { data: review = [] } = UseReviews();
 
   return (
     <article className={styles.card} key={booking.id}>
@@ -41,10 +45,14 @@ export default function BookingCard({ booking, cancelMutation }: BookingCard) {
             </button>
           ) : (
             <div className={styles.buttons}>
-              <Link href={`/driver/review/${booking.id}`}
-              className={styles.review}>
-                Leave a review
-              </Link>
+              {!review.some((r) => r.lot_id === booking.lot_id) && (
+                <Link
+                  href={`/driver/review/${booking.id}`}
+                  className={styles.review}
+                >
+                  Leave a review
+                </Link>
+              )}
               <button
                 className={styles.cancel}
                 type="button"

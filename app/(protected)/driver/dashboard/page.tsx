@@ -2,9 +2,9 @@
 import styles from "./driver.module.css";
 import useParkingSpots from "@/hooks/useParkingSpots";
 import Loading from "@/components/Loading";
-import { addFavorites } from "@/lib/driver-favorites";
+import { addFavorites } from "@/lib/driverFavorites";
 import useFavorites from "@/hooks/useFavorites";
-import { removeFavorite } from "@/lib/remove-favorite";
+import { removeFavorite } from "@/lib/removeFavorite";
 import WideCard from "@/components/cards/WideCard";
 
 export default function Driver() {

@@ -1,8 +1,7 @@
 "use client"
-import React from "react";
 import {useQuery} from "@tanstack/react-query"
 import type { FavoriteSpot } from "@/types/types";
-import { getFavorites } from "@/lib/driver-favorites";
+import { getFavorites } from "@/lib/driverFavorites";
 
 export default function useFavorites(){
 

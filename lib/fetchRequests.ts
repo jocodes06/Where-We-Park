@@ -22,6 +22,8 @@ export default async function fetchRequests(user: User){
 
     const data = await response.json();
 
+    console.log("API RESPONSE:", data.bookingRequests);
+
      if(!response.ok){
        alert("Failed to fetch booking requests");
     }

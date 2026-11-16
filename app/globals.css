@@ -104,6 +104,10 @@ button{
   cursor: pointer;
 }
 
+.selected{
+  background-color: var(--soft-green);
+}
+
 
 #pending {
   background-color: var(--dark-yellow);
@@ -124,3 +128,4 @@ button{
   background-color: rgb(93, 25, 25);
   color: red;
 }
+

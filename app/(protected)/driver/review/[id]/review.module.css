@@ -17,23 +17,21 @@
   height: 100px;
 }
 
-.backBtn{
+.backBtn {
   padding: 1rem;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease-in;
-
 }
 
-.backBtn:hover { 
+.backBtn:hover {
   background: var(--green-transparent);
 }
-
 
 .layout {
   display: flex;
@@ -45,14 +43,13 @@
   align-items: stretch;
 }
 
-
 .spotSide,
 .form {
   width: 50%;
   height: 100%;
 }
 
-/* ---------- Left: spot ---------- */
+
 .spotSide {
   background-color: red;
   background: var(--surface);
@@ -60,7 +57,7 @@
   display: flex;
   flex-direction: column;
   border-right: 2px solid var(--green-transparent);
-  gap:1rem;
+  gap: 1rem;
 }
 
 .photo {
@@ -72,13 +69,13 @@
 }
 
 .spotBody {
-  padding: 1.75rem 2rem 2.5rem;
+  padding: 2rem;
 }
 
 .titleRow {
   display: flex;
   align-items: center;
-  width:100%;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
@@ -87,45 +84,52 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .details {
   display: flex;
   flex-direction: row;
-  width:100%;
-  justify-content: space-between;
-  gap:1rem;
   flex-wrap: wrap;
+  width: 100%;
+  border: 2px solid var(--green-transparent);
+  border-radius: 1.25rem;
+  overflow: hidden;
 }
+
 .detail {
-  width:45%;
-  padding:1rem;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0.875rem 1.125rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-top: 2px solid var(--green-transparent);
 }
 
-.detail span {
-  font-weight: 600;
-  font-size: 0.9375rem;
+.detail:nth-child(-n + 2) {
+  border-top: 0;
 }
 
+.detail:nth-child(even) {
+  border-left: 2px solid var(--green-transparent);
+}
+.detail > label {
+  font-weight: 800;
+  color: var(--gray-green);
+}
 
 .form {
   background-color: var(--dark-green);
-
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
-.form h3 {
-  margin: 0 0 0.75rem;
-  font-family: "Bricolage Grotesque", sans-serif;
-  letter-spacing: -0.02em;
-  font-size: 1.25rem;
-}
-.form h3:not(:first-child) { margin-top: 2rem; }
 
-/* Star rating (CSS only) */
 .stars {
   display: flex;
   flex-direction: row-reverse;
@@ -140,14 +144,19 @@
 .stars label {
   font-size: 2.5rem;
   line-height: 1;
-  color: var(--line);
   cursor: pointer;
   transition: color 0.12s ease;
 }
+
+.chips button.selected{
+  background-color: var(--soft-green);
+}
+
+
 .stars input:checked ~ label,
 .stars label:hover,
 .stars label:hover ~ label {
-  color: var(--sun);
+  color: var(--sunny-yellow);
 }
 .stars input:focus-visible + label {
   outline: 0.1875rem solid var(--sun);
@@ -155,78 +164,69 @@
   border-radius: 0.5rem;
 }
 
-/* Chips */
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-.chips input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.chips label {
-  padding: 0.5rem 0.9375rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  font-size: 0.875rem;
-  font-weight: 600;
+
+.chips button {
   cursor: pointer;
-}
-.chips input:checked + label {
-  background: var(--pine);
-  border-color: var(--pine);
-  color: var(--on-pine);
-}
-.chips input:focus-visible + label {
-  outline: 0.1875rem solid var(--sun);
-  outline-offset: 0.125rem;
+  background-color: var(--bg-green);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.2s ease-in;
 }
 
-/* Textarea */
+.chips button:hover {
+  background-color: var(--soft-green);
+}
+
 .textarea {
   width: 100%;
-  min-height: 9rem;
-  resize: vertical;
-  padding: 0.875rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 0.875rem;
-  background: var(--surface);
-  color: var(--ink);
-  font: inherit;
-}
-.textarea:focus {
-  outline: none;
-  border-color: var(--pine);
-  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--pine) 18%, transparent);
+  min-height: 10rem;
+  resize: none;
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--bg-green);
 }
 
 .submitBtn {
   width: 100%;
-  margin-top: 2rem;
-  padding: 0.9375rem 1.25rem;
+  padding: 1rem;
   border: 0;
-  border-radius: 999px;
-  background: var(--sun);
-  color: var(--on-sun);
-  font: inherit;
+  border-radius: 20px;
+  background: var(--sunny-yellow);
+  color: var(--dark-green);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
 }
 
-
 @media (max-width: 56rem) {
-  .layout { grid-template-columns: 1fr; }
-  .spotSide { border-right: 0; border-bottom: 1px solid var(--line); }
-  .photo { height: 15rem; }
-  .spotBody { padding: 1.25rem 1.5rem 1.75rem; }
-  .form { padding: 1.75rem 1.5rem 3rem; }
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .spotSide {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .photo {
+    height: 15rem;
+  }
+  .spotBody {
+    padding: 1.25rem 1.5rem 1.75rem;
+  }
+  .form {
+    padding: 1.75rem 1.5rem 3rem;
+  }
 }
 
 @media (max-width: 40rem) {
-  .header { padding: 0.75rem 1rem; }
-  .stars label { font-size: 2.25rem; }
+  .header {
+    padding: 0.75rem 1rem;
+  }
+  .stars label {
+    font-size: 2.25rem;
+  }
 }
