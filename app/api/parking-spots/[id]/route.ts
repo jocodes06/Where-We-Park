@@ -1,0 +1,116 @@
+import { pool } from "../../lib/db";
+import { getCurrentUser } from "../../lib/auth";
+import { NextResponse } from "next/server";
+
+export async function GET(req: Request) {
+  try {
+    const user = await getCurrentUser();
+
+    const lot_id = await req.json();
+
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "User isn't logged in",
+        },
+        { status: 401 },
+      );
+    }
+
+    const result = await pool.query(
+      `SELECT
+            ps.*,
+            ( SELECT CONCAT(u.first_name,' ' , u.last_name)
+            FROM users u
+            where u.id = ps.owner_id)
+            as host_name,
+            COALESCE(
+                (SELECT json_agg(
+                        json_build_object(
+                            'id', psp.id,
+                            'photo_url', psp.photo_url))
+                    FROM parking_spot_photos psp
+                    WHERE psp.parking_spot_id = ps.id),'[]'::json
+            ) AS photos,
+            COALESCE(
+                (SELECT json_agg(
+                json_build_object(
+                            'type', psa.amenity,
+                            'icon', psa.icon
+                        ))
+                    FROM parking_spot_amenities psa
+                    WHERE psa.parking_spot_id = ps.id
+                ),
+                '[]'::json
+            ) AS amenities,
+           COALESCE(
+    (
+        SELECT json_agg(
+        json_build_object(
+        'day',
+        CASE psa.day_of_week
+            WHEN 0 THEN 'Monday'
+            WHEN 1 THEN 'Tuesday'
+            WHEN 2 THEN 'Wednesday'
+            WHEN 3 THEN 'Thursday'
+            WHEN 4 THEN 'Friday'
+            WHEN 5 THEN 'Saturday'
+            WHEN 6 THEN 'Sunday'
+        END,
+        'isOpen', psa.is_open,
+        'openTime', psa.open_time,
+        'closeTime', psa.close_time
+    )
+    ORDER BY psa.day_of_week
+)
+FROM parking_spot_availability psa
+WHERE psa.parking_spot_id = ps.id
+    ),
+    '[]'::json
+) AS availability,
+ 
+COALESCE(
+    (
+        SELECT json_agg(
+            json_build_object(
+                'id', r.id,
+                'driver_id', r.driver_id,
+                'host_name', CONCAT(u.first_name, ' ', u.last_name),
+                'stars', r.stars,
+                'description', r.description,
+                'tags', COALESCE(
+                    (
+                        SELECT json_agg(
+                            json_build_object(
+                                'id', rt.id,
+                                'tag', rt.review_tag
+                            )
+                        )
+                        FROM review_tags rt
+                        WHERE rt.review_id = r.id
+                    ),
+                    '[]'::json
+                )
+            )
+        )
+        FROM reviews r
+        LEFT JOIN users u ON r.driver_id = u.id
+        WHERE r.lot_id = ps.id
+    ),
+    '[]'::json
+) AS reviews
+
+  FROM parking_spots ps
+  WHERE ps.owner_id = $1`,
+
+      [user.id],
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error: "Coulnd't load this specific parking spot!",
+      },
+      { status: 500 },
+    );
+  }
+}

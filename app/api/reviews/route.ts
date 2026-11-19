@@ -1,7 +1,7 @@
 import { pool } from "../lib/db";
 import { getCurrentUser } from "../lib/auth";
 import { NextResponse } from "next/server";
-import { get } from "http";
+
 
 export async function POST(req: Request) {
   try {
@@ -72,6 +72,7 @@ export async function GET() {
       FROM reviews r
       LEFT JOIN review_tags rt ON r.id = rt.review_id
       WHERE r.driver_id = $1
+      
     `,
       [user.id],
     );

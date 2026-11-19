@@ -1,12 +1,12 @@
 "use client"
 import {useQuery} from "@tanstack/react-query"
-import type { FavoriteSpot } from "@/types/types";
+import type { ParkingSpot } from "@/types/types";
 import { getFavorites } from "@/lib/driverFavorites";
 
 export default function useFavorites(){
 
 
-    return useQuery<FavoriteSpot[]>({
+    return useQuery<ParkingSpot[]>({
          queryKey:["favoriteSpots"],
 
          queryFn: async () => {

@@ -1,19 +1,23 @@
 "use client";
 import styles from "../owner.module.css";
-import Header from "@/components/Owner/Header";
 import { updateBookingStatus } from "@/lib/updateBookingStatus";
-import {BookingRequest} from "@/types/types"
-
-import useBookingRequests from "@/hooks/useBookingRequests"
+import useBookingRequests from "@/hooks/useBookingRequests";
+import Loading from "@/components/Loading";
 
 export default function Bookings() {
-  
+  const {
+    data: bookingRequests = [],
+    refetch,
+    isLoading,
+    isError,
+    error,
+  } = useBookingRequests();
 
-  const {data : bookingRequests = [], refetch} = useBookingRequests();
+  if (isLoading) return <Loading />;
+  if (isError) return <p>{error.message}</p>;
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
 
   return (
     <section className={styles.subpage}>
@@ -61,8 +65,8 @@ export default function Bookings() {
                   <div className={styles.buttonsDiv}>
                     <button
                       onClick={async () => {
-                         await updateBookingStatus(item.id, "declined");
-                         await refetch();
+                        await updateBookingStatus(item.id, "declined");
+                        await refetch();
                       }}
                     >
                       Decline
@@ -141,11 +145,11 @@ export default function Bookings() {
               </div>
             ),
         )}
-        {!bookingRequests.some((item) => item.status === "approved" &&
-        new Date(item.booking_date) >= new Date(today.toString()) ) &&
-         (
-          <p>You currently have no upcoming reservation!</p>
-        )}
+        {!bookingRequests.some(
+          (item) =>
+            item.status === "approved" &&
+            new Date(item.booking_date) >= new Date(today.toString()),
+        ) && <p>You currently have no upcoming reservation!</p>}
 
         <h4>PAST</h4>
         {bookingRequests.map(

@@ -1,15 +1,3 @@
-export type Booking = {
-  id:string,
-  booking_date: string;
-  duration_type: string,
-  duration_hours: number,
-  start_time: string,
-  end_time: string,
-  parking_cost: number,
-  service_fee: number,
-  total_amount: number
-}
-
 export type User = {
     id: number,
     firstName: string,
@@ -23,6 +11,18 @@ export type Review = {
    description:string,
    stars: number,
    tags: string[];
+}
+
+export type Booking = {
+  id:string,
+  booking_date: string;
+  duration_type: string,
+  duration_hours: number,
+  start_time: string,
+  end_time: string,
+  parking_cost: number,
+  service_fee: number,
+  total_amount: number
 }
 
 
@@ -45,13 +45,6 @@ export type BookingRequest = {
     status: string;
 };
 
-export type ParkingSpotsContextType = {
-    parkingSpots: ParkingSpot[];
-    setParkingSpots: React.Dispatch<React.SetStateAction<ParkingSpot[]>>;
-    isLoading: boolean;
-    error: string | null;
-    refresh: () => Promise<void>;
-};
 
 export type ParkingSpot = {
   id: string;
@@ -70,29 +63,22 @@ export type ParkingSpot = {
     photo_url: string;
   }[];
   amenities?: AmenityType[]
-};
-
-export type FavoriteSpot = {
-  id: string;
-  lot_name:string,
-  address: string;
-  city: string;
-  spot_type: string;
-  price_per_hours: number;
-  is_active: boolean;
-  photos: {
-    id: string;
-    photo_url: string;
-  }[];
-  amenities?: AmenityType[]
+  reviews: review
 };
 
 
- export type FeaturesType = {
-  icon: string,
-  title: string,
-  text: string,
-}[]
+export type review = {
+    description:string,
+    driver_id:string,
+    review_id:string,
+    stars: number,
+    tags: {
+        id:string,
+        tag:string,
+    }[],
+    host_name:string,
+  }[]
+
 
 
 export type parkingSpotForm = {

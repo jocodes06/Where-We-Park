@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/app/api/lib/db";
 import { getCurrentUser } from "@/app/api/lib/auth";
-import { v2 as cloudinary } from "cloudinary"
+import { v2 as cloudinary } from "cloudinary";
 
-
-// Set up for adding the photos 
+// Set up for adding the photos
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -14,24 +13,22 @@ cloudinary.config({
 
 async function uploadPhoto(file: File) {
   const buffer = Buffer.from(await file.arrayBuffer());
-  return new Promise<{ url: string; publicId: string }>(
-    (resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream(
-          { folder: "wherewepark/parking-spots" },
-          (error, result) => {
-            if (error) return reject(error);
-            if (!result) return reject(new Error("Upload failed"));
+  return new Promise<{ url: string; publicId: string }>((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream(
+        { folder: "wherewepark/parking-spots" },
+        (error, result) => {
+          if (error) return reject(error);
+          if (!result) return reject(new Error("Upload failed"));
 
-            resolve({
-              url: result.secure_url,
-              publicId: result.public_id,
-            });
-          }
-        )
-        .end(buffer);
-    }
-  );
+          resolve({
+            url: result.secure_url,
+            publicId: result.public_id,
+          });
+        },
+      )
+      .end(buffer);
+  });
 }
 
 // Fetch the parking spots for the user
@@ -41,44 +38,106 @@ export async function GET() {
     const user = await getCurrentUser();
 
     if (!user) {
-      return NextResponse.json(
-        { error: "Not logged in" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     }
 
     const result = await pool.query(
       `SELECT
-    ps.*,
-    COALESCE((
-      SELECT json_agg(json_build_object(
-        'id', psp.id,
-        'photo_url', psp.photo_url
-      ))
-      FROM parking_spot_photos psp
-      WHERE psp.parking_spot_id = ps.id
-    ), '[]'::json) AS photos,
-    COALESCE((
-      SELECT json_agg(json_build_object(
-        'type', psa.amenity,
-        'icon', psa.icon
-      ))
-      FROM parking_spot_amenities psa
-      WHERE psa.parking_spot_id = ps.id
-    ), '[]'::json) AS amenities
+            ps.*,
+            ( SELECT CONCAT(u.first_name,' ' , u.last_name)
+            FROM users u
+            where u.id = ps.owner_id)
+            as host_name,
+            COALESCE(
+                (SELECT json_agg(
+                        json_build_object(
+                            'id', psp.id,
+                            'photo_url', psp.photo_url))
+                    FROM parking_spot_photos psp
+                    WHERE psp.parking_spot_id = ps.id),'[]'::json
+            ) AS photos,
+            COALESCE(
+                (SELECT json_agg(
+                json_build_object(
+                            'type', psa.amenity,
+                            'icon', psa.icon
+                        ))
+                    FROM parking_spot_amenities psa
+                    WHERE psa.parking_spot_id = ps.id
+                ),
+                '[]'::json
+            ) AS amenities,
+           COALESCE(
+    (
+        SELECT json_agg(
+        json_build_object(
+        'day',
+        CASE psa.day_of_week
+            WHEN 0 THEN 'Monday'
+            WHEN 1 THEN 'Tuesday'
+            WHEN 2 THEN 'Wednesday'
+            WHEN 3 THEN 'Thursday'
+            WHEN 4 THEN 'Friday'
+            WHEN 5 THEN 'Saturday'
+            WHEN 6 THEN 'Sunday'
+        END,
+        'isOpen', psa.is_open,
+        'openTime', psa.open_time,
+        'closeTime', psa.close_time
+    )
+    ORDER BY psa.day_of_week
+)
+FROM parking_spot_availability psa
+WHERE psa.parking_spot_id = ps.id
+    ),
+    '[]'::json
+) AS availability,
+ 
+COALESCE(
+    (
+        SELECT json_agg(
+            json_build_object(
+                'id', r.id,
+                'driver_id', r.driver_id,
+                'host_name', CONCAT(u.first_name, ' ', u.last_name),
+                'stars', r.stars,
+                'description', r.description,
+                'tags', COALESCE(
+                    (
+                        SELECT json_agg(
+                            json_build_object(
+                                'id', rt.id,
+                                'tag', rt.review_tag
+                            )
+                        )
+                        FROM review_tags rt
+                        WHERE rt.review_id = r.id
+                    ),
+                    '[]'::json
+                )
+            )
+        )
+        FROM reviews r
+        LEFT JOIN users u ON r.driver_id = u.id
+        WHERE r.lot_id = ps.id
+    ),
+    '[]'::json
+) AS reviews
+
   FROM parking_spots ps
   WHERE ps.owner_id = $1`,
-      [user.id]
+
+      [user.id],
     );
 
     return NextResponse.json({
       parkingSpots: result.rows,
     });
   } catch (error) {
-    console.error("Getting the users parking spots failed: ",error);
+    console.error("Getting the users parking spots failed: ", error);
     return NextResponse.json(
       { error: "Something went wrong" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -93,10 +152,7 @@ export async function POST(req: Request) {
     const user = await getCurrentUser();
 
     if (!user) {
-      return NextResponse.json(
-        { error: "Not logged in" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     }
 
     const requestData = await req.formData();
@@ -105,13 +161,14 @@ export async function POST(req: Request) {
     if (typeof fieldsString !== "string") {
       return NextResponse.json(
         { error: "Missing form fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const fields = JSON.parse(fieldsString);
-    const photos = requestData.getAll("photos").filter(
-      (item): item is File => item instanceof File && item.size > 0);
+    const photos = requestData
+      .getAll("photos")
+      .filter((item): item is File => item instanceof File && item.size > 0);
 
     const {
       name,
@@ -133,7 +190,17 @@ export async function POST(req: Request) {
          price_per_day, description, is_active)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
        RETURNING *`,
-      [user.id,name,address,city,spotType,pricePerHour,pricePerDay,description,true,]
+      [
+        user.id,
+        name,
+        address,
+        city,
+        spotType,
+        pricePerHour,
+        pricePerDay,
+        description,
+        true,
+      ],
     );
 
     const parkingSpot = result.rows[0];
@@ -143,13 +210,21 @@ export async function POST(req: Request) {
         `INSERT INTO parking_spot_availability
           (parking_spot_id, day_of_week, is_open, open_time, close_time)
          VALUES ($1, $2, $3, $4, $5)`,
-        [parkingSpot.id, [
-            "Monday", "Tuesday", "Wednesday", "Thursday",
-            "Friday", "Saturday", "Sunday",].indexOf(day.day),
+        [
+          parkingSpot.id,
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ].indexOf(day.day),
           day.isOpen,
           day.openTime || null,
           day.closeTime || null,
-        ]
+        ],
       );
     }
 
@@ -158,7 +233,7 @@ export async function POST(req: Request) {
         `INSERT INTO parking_spot_amenities
           (parking_spot_id, amenity, icon)
          VALUES ($1, $2,$3)`,
-        [parkingSpot.id, amenity.type, amenity.icon]
+        [parkingSpot.id, amenity.type, amenity.icon],
       );
     }
 
@@ -170,7 +245,7 @@ export async function POST(req: Request) {
         `INSERT INTO parking_spot_photos
           (parking_spot_id, photo_url, public_id)
          VALUES ($1, $2, $3)`,
-        [parkingSpot.id, uploaded.url, uploaded.publicId]
+        [parkingSpot.id, uploaded.url, uploaded.publicId],
       );
     }
 
@@ -181,30 +256,27 @@ export async function POST(req: Request) {
         message: "Parking spot created successfully",
         parkingSpot,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     await client.query("ROLLBACK");
 
     await Promise.allSettled(
-      uploadedPublicIds.map((id) =>
-        cloudinary.uploader.destroy(id)
-      )
+      uploadedPublicIds.map((id) => cloudinary.uploader.destroy(id)),
     );
 
-    console.error("Adding a parking spot failed:",error);
+    console.error("Adding a parking spot failed:", error);
 
     return NextResponse.json(
       {
         error: "Something went wrong",
       },
-      { status: 500 }
+      { status: 500 },
     );
   } finally {
     client.release();
   }
 }
-
 
 // update is_acitve
 
@@ -219,13 +291,13 @@ export async function PATCH(req: Request) {
 
     const result = await pool.query(
       `UPDATE parking_spots SET is_active = $1 WHERE id = $2 AND owner_id = $3 RETURNING id`,
-      [is_active, id, user.id]
+      [is_active, id, user.id],
     );
 
     if (result.rowCount === 0) {
       return NextResponse.json(
         { error: "Parking spot not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -234,7 +306,7 @@ export async function PATCH(req: Request) {
     console.error("Updating status failed:", error);
     return NextResponse.json(
       { error: "Failed to update parking spot" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
