@@ -62,7 +62,40 @@ FROM parking_spot_availability psa
 WHERE psa.parking_spot_id = ps.id
     ),
     '[]'::json
-) AS availability
+) AS availability,
+
+
+COALESCE(
+    (
+        SELECT json_agg(
+            json_build_object(
+                'id', r.id,
+                'driver_id', r.driver_id,
+                'host_name', CONCAT(u.first_name, ' ', u.last_name),
+                'stars', r.stars,
+                'description', r.description,
+                'tags', COALESCE(
+                    (
+                        SELECT json_agg(
+                            json_build_object(
+                                'id', rt.id,
+                                'tag', rt.review_tag
+                            )
+                        )
+                        FROM review_tags rt
+                        WHERE rt.review_id = r.id
+                    ),
+                    '[]'::json
+                )
+            )
+        )
+        FROM reviews r
+        LEFT JOIN users u ON u.id = r.driver_id
+        WHERE r.lot_id = ps.id
+    ),
+    '[]'::json
+) AS reviews
+
 
         FROM parking_spots ps
         WHERE ps.is_active = TRUE

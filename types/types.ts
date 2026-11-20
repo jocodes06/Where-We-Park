@@ -79,7 +79,11 @@ export type review = {
     host_name:string,
   }[]
 
-
+export type FeaturesType={
+    icon:string,
+    title:string,
+    text:string,
+}[]
 
 export type parkingSpotForm = {
     name: string,

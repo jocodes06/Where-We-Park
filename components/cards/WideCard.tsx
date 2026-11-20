@@ -1,11 +1,11 @@
 import styles from "./cards.module.css"
 import Link from "next/link";
-import { ParkingSpot, FavoriteSpot } from "@/types/types";
+import { ParkingSpot } from "@/types/types";
 
 type WideCardProps = {
     spots : ParkingSpot[],
     handleFavorites : (id: string) => Promise<void>,
-    favorites : FavoriteSpot[]
+    favorites : ParkingSpot[]
 }
 
 export default function WideCard({spots, handleFavorites, favorites}: WideCardProps){

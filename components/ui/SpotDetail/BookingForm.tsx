@@ -1,4 +1,4 @@
-import styles from "@/app/(protected)/driver/spotDetail/[id]/spot.module.css";
+import styles from "./spot.module.css"
 import type { ParkingSpot } from "@/types/types";
 import React from "react";
 import type { Booking } from "@/types/types";
