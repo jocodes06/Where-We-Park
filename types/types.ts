@@ -51,7 +51,6 @@ export type ParkingSpot = {
   host_name:string,
   name:string,
   address: string;
-  city: string;
   spot_type: string;
   price_per_hours: number;
   price_per_day: number;
@@ -64,6 +63,9 @@ export type ParkingSpot = {
   }[];
   amenities?: AmenityType[]
   reviews: review
+  latitude:string,
+  longitude:string,
+  city:string,
 };
 
 
@@ -88,7 +90,6 @@ export type FeaturesType={
 export type parkingSpotForm = {
     name: string,
     address: string,
-    city: string,
     spotType: string,
     pricePerHour: number,
     pricePerDay: number,
@@ -96,7 +97,14 @@ export type parkingSpotForm = {
     amenities: AmenityType[],
     photos: Photo[],
     description: string,
+    latitude?:string,
+    longitude?:string,
 }
+
+export type AddSpotProps={
+    formData: parkingSpotForm;
+    setFormData: React.Dispatch<React.SetStateAction<parkingSpotForm>>;
+};
 
 export type AmenityType = {
     type: string,

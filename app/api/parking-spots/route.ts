@@ -180,6 +180,8 @@ export async function POST(req: Request) {
       availability,
       amenities,
       description,
+      latitude,
+      longitude
     } = fields;
 
     await client.query("BEGIN");
@@ -187,8 +189,8 @@ export async function POST(req: Request) {
     const result = await client.query(
       `INSERT INTO parking_spots
         (owner_id, name, address, city, spot_type, price_per_hours,
-         price_per_day, description, is_active)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+         price_per_day, description, is_active,latitude, longitude)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10,$11)
        RETURNING *`,
       [
         user.id,
@@ -200,6 +202,8 @@ export async function POST(req: Request) {
         pricePerDay,
         description,
         true,
+        latitude,
+        longitude
       ],
     );
 

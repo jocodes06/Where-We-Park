@@ -13,9 +13,83 @@
     justify-content: flex-start;
     background-color: var(--dark-green);
     color: white;
-    flex-direction: column;
+    flex-direction: row;
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
+}
+.mapAndInput{
+    width:50%;
+    padding: 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.cards{
+  width:50%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.locationInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e2e8e4;
+  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.locationInput i {
+  color: var(--bg-green);
+  font-size: 1.1rem;
+}
+
+.locationInput button{
+  background-color: red;
+}
+
+.locationInput input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #333;
+  min-width: 0;
+}
+
+.locationInput input::placeholder {
+  color: #a0aaa4;
+}
+
+.locationInput:focus-within {
+  border-color: var(--bg-green);
+  box-shadow: 0 0 0 3px rgba(0, 128, 80, 0.1);
+}
+
+
+
+@media (min-width: 481px) and (max-width: 768px){
+    .driverMain{
+        flex-direction: column;
+    }
+    .driverMain > div{
+      width:100%;
+    }
+}
+
+
+@media (max-width: 480px){
+    .driverMain{
+        flex-direction: column;
+    }
+     .driverMain > div{
+      width:100%;
+    }
 }
 

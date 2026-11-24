@@ -9,6 +9,10 @@
     gap:2rem;
 }
 
+.spot:hover{
+    background-color: var(--green-transparent);
+}
+
 
 .spot {
     width: 100%;
@@ -147,7 +151,6 @@
 }
 
 
-/* TABLETS / SMALL LAPTOPS */
 @media (min-width: 769px) and (max-width: 1024px) {
     .spotDiv {
         padding: 1.5rem;

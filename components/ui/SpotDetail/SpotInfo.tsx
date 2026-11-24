@@ -82,7 +82,7 @@ export default function SpotInfo({
 
       <div className={styles.metaLine}>
         <span className={styles.dotSep}>
-          {spot?.city}, {spot?.address}
+          {spot?.address}
         </span>
       </div>
 
@@ -113,7 +113,7 @@ export default function SpotInfo({
       <div className={styles.section}>
         <h3>Location</h3>
         <p>
-          {spot?.address}, {spot?.city}
+          {spot?.address}
         </p>
       </div>
     </>

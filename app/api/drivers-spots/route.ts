@@ -73,7 +73,6 @@ COALESCE(
                 'driver_id', r.driver_id,
                 'host_name', CONCAT(u.first_name, ' ', u.last_name),
                 'stars', r.stars,
-                'description', r.description,
                 'tags', COALESCE(
                     (
                         SELECT json_agg(
@@ -107,6 +106,8 @@ COALESCE(
         ...spot,
         price_per_hours: Number(spot.price_per_hours),
         price_per_day: Number(spot.price_per_days),
+        latitude: spot.latitude,
+        longitude: spot.longitude,
       })),
     });
   } catch (error) {
